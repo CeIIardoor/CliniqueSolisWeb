@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr" class="dark">
+<html lang="fr" class>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,7 +41,7 @@
   <meta property="og:type" content="website">
   <meta property="og:image" content="/images/og-image.png">
   <meta property="og:image:type" content="image/png">
-  <script type="text/javascript">
+  <script type="javascript">
     if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage)
       && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
@@ -52,9 +52,9 @@
 </head>
 <body>
   <app-root></app-root>
-  <script type="javascript" src="/node_modules/flowbite/dist/flowbite.min.js"></script>
   <script async defer src="/assets/js/buttons.min.js"></script>
   <script async defer src="/assets/js/app.bundle.js"></script>
   <script async defer src="/assets/js/datepicker.min.js"></script>
+  <script async defer type="javascript" src="/node_modules/flowbite/dist/flowbite.min.js"></script>
 </body>
 </html>

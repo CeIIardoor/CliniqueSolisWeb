@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
 import { AdminComponent } from './admin/admin.component';
@@ -12,6 +11,8 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { NgOptimizedImage } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
 
 const routes: Routes = [
   { path: 'index', component: IndexComponent },
@@ -40,6 +41,8 @@ const routes: Routes = [
     AppRoutingModule,
     BrowserModule,
     RouterModule.forRoot(routes),
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

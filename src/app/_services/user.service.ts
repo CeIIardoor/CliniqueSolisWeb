@@ -15,7 +15,7 @@ export class UserService {
   );
 
   constructor(
-    private httpclient: HttpClient,
+    private httpClient: HttpClient,
     private userAuthService: UserAuthService
   ) {
 
@@ -23,7 +23,7 @@ export class UserService {
 
   public login(email: String, password: String) {
 
-    return this.httpclient.post(
+    return this.httpClient.post(
       this.BACKEND_PATH + "login",
       { email, password },
       { headers: this.requestHeader });

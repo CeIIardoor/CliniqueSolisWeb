@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.router.navigate(['/index']).then(r => console.log("logout to index : " + r));
+    this.router.navigate(['/']).then(r => console.log("logout to index : " + r));
     this.userAuthService.clear();
   }
 }

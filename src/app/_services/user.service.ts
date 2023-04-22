@@ -29,7 +29,7 @@ export class UserService {
       { headers: this.requestHeader });
   }
 
-  public authorize(allowedRoles: string[]): boolean {
+  public isCurrentUserAuthorized(allowedRoles: string[]): boolean {
     const userRole = this.userAuthService.getRole();
     if (userRole === null) {
       return false;

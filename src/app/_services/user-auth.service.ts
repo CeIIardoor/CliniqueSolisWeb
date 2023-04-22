@@ -12,6 +12,9 @@ export class UserAuthService {
   }
 
   public getRole() : string {
+    if (localStorage.getItem('role') === null) {
+      return '';
+    }
     return JSON.parse(localStorage.getItem('role') || '');
   }
 
@@ -20,7 +23,10 @@ export class UserAuthService {
   }
 
   public getToken() : string {
-    return localStorage.getItem('jwtToken') || '';
+    if (localStorage.getItem('jwtToken') === null) {
+      return '';
+    }
+    return JSON.parse(localStorage.getItem('jwtToken') || '');
   }
 
   public clear() {

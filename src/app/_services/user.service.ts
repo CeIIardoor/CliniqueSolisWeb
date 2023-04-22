@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import {UserAuthService} from "./user-auth.service";
 
 @Injectable({
   providedIn: "root"
@@ -9,11 +10,14 @@ export class UserService {
   BACKEND_PATH = "http://localhost:8080/api/auth/";
   requestHeader = new HttpHeaders(
     {
-      "No-Auth": "True"  // This is the header that is used to bypass the authentication in the backend
+      "No-Auth": "True"
     }
   );
 
-  constructor(private httpclient: HttpClient) {
+  constructor(
+    private httpclient: HttpClient,
+    private userAuthService: UserAuthService
+  ) {
 
   }
 
@@ -23,5 +27,13 @@ export class UserService {
       this.BACKEND_PATH + "login",
       { email, password },
       { headers: this.requestHeader });
+  }
+
+  public authorize(allowedRoles: string[]): boolean {
+    const userRole = this.userAuthService.getRole();
+    if (userRole === null) {
+      return false;
+    }
+    return allowedRoles.includes(userRole);
   }
 }

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class HomeService {
 
-  BACKEND_PATH = "https://cellardoor.info:8080/api/demo-controller/";
+  BACKEND_PATH = "https://cliniquesolisbackend.cellardoor.info:8080/api/demo-controller/";
 
   constructor(private http: HttpClient) { }
 

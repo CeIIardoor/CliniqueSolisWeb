@@ -7,7 +7,7 @@ import {UserAuthService} from "./user-auth.service";
 })
 export class UserService {
 
-  BACKEND_PATH = "http://cellardoor.info:8080/api/auth/";
+  BACKEND_PATH = "https://cellardoor.info:8080/api/auth/";
   requestHeader = new HttpHeaders(
     {
       "No-Auth": "True"

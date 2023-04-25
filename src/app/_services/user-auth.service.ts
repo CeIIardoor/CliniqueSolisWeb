@@ -8,25 +8,19 @@ export class UserAuthService {
   constructor() { }
 
   public setRole(role: string) {
-    localStorage.setItem('role', JSON.stringify(role));
+    localStorage.setItem('role', role);
   }
 
   public getRole() : string {
-    if (localStorage.getItem('role') === null) {
-      return '';
-    }
-    return JSON.parse(localStorage.getItem('role') || '');
+    return localStorage.getItem('role') || '';
   }
 
   public setToken(jwtToken: string) {
-    localStorage.setItem('jwtToken', JSON.stringify(jwtToken));
+    localStorage.setItem('jwtToken', jwtToken);
   }
 
   public getToken() : string {
-    if (localStorage.getItem('jwtToken') === null) {
-      return '';
-    }
-    return JSON.parse(localStorage.getItem('jwtToken') || '');
+    return localStorage.getItem('jwtToken') || '';
   }
 
   public clear() {

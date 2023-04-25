@@ -16,6 +16,7 @@ import { AuthGuard } from './_auth/auth.guard';
 import { UserService } from './_services/user.service';
 import {AuthMiddlewareInterceptor} from "./_auth/auth-middleware.interceptor";
 import {NgOptimizedImage} from "@angular/common";
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {NgOptimizedImage} from "@angular/common";
     HomeComponent,
     LoginComponent,
     HeaderComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

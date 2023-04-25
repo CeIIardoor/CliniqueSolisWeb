@@ -19,22 +19,22 @@ export class AuthMiddlewareInterceptor implements HttpInterceptor {
     }
 
     const token = this.UserAuthService.getToken();
-    req = this.addToken(req, token);
 
     if (token != null) {
+      req = this.addToken(req, token);
       return next.handle(req).pipe(
         catchError((error) => {
           if (error.status === 401) {
             this.UserAuthService.clear();
-            this.router.navigate(['/login']).then(r => console.log("Middleware intercepted request : Invalid token"));
+            this.router.navigate(['/login']).then(() => console.log("Middleware intercepted request : Invalid token"));
           } else if (error.status === 403) {
-            this.router.navigate(['/forbidden']).then(r => console.log("Middleware intercepted request : Authorization error"));
+            this.router.navigate(['/forbidden']).then(() => console.log("Middleware intercepted request : Authorization error"));
           }
           return throwError(error);
         })
       );
     } else {
-      this.router.navigate(['/login']).then(r => console.log("Middleware intercepted request : Please Log in"));
+      this.router.navigate(['/login']).then(() => console.log("Middleware intercepted request : Please Log in"));
     }
   }
 

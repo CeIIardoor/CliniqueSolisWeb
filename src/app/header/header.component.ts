@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { UserAuthService } from "../_services/user-auth.service";
 import { Router } from "@angular/router";
 import {UserService} from "../_services/user.service";
+import {routeNames} from "../routes";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-header',
@@ -22,7 +24,9 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.router.navigate(['/']).then(r => console.log("logout to index : " + r));
+    this.router.navigate(['/'+ routeNames.index]).then(r => console.log("logout to index : " + r));
     this.userAuthService.clear();
   }
+
+    protected readonly routeNames = routeNames;
 }

@@ -3,6 +3,7 @@ import {catchError, throwError} from "rxjs";
 import {UserAuthService} from "../_services/user-auth.service";
 import {Router} from "@angular/router";
 import {Injectable} from "@angular/core";
+import {routeNames} from "../routes";
 
 @Injectable()
 export class AuthMiddlewareInterceptor implements HttpInterceptor {
@@ -26,15 +27,15 @@ export class AuthMiddlewareInterceptor implements HttpInterceptor {
         catchError((error) => {
           if (error.status === 401) {
             this.UserAuthService.clear();
-            this.router.navigate(['/login']).then(() => console.log("Middleware intercepted request : Invalid token"));
+            this.router.navigate(['/' + routeNames.login]).then(() => console.log("Middleware intercepted request : Invalid token"));
           } else if (error.status === 403) {
-            this.router.navigate(['/forbidden']).then(() => console.log("Middleware intercepted request : Authorization error"));
+            this.router.navigate(['/' + routeNames.forbidden]).then(() => console.log("Middleware intercepted request : Authorization error"));
           }
           return throwError(error);
         })
       );
     } else {
-      this.router.navigate(['/login']).then(() => console.log("Middleware intercepted request : Please Log in"));
+      this.router.navigate(['/' + routeNames.login]).then(() => console.log("Middleware intercepted request : Please Log in"));
     }
   }
 

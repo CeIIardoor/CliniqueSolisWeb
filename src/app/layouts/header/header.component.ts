@@ -16,6 +16,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  public isDashboard() : boolean {
+    return this.router.url.includes(routeNames.dashboard);
+  }
+
   public isAuthenticated() : boolean {
     return this.userAuthService.isAuthenticated();
   }

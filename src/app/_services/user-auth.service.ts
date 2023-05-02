@@ -11,16 +11,16 @@ export class UserAuthService {
     localStorage.setItem('role', role);
   }
 
-  public getRole() : string {
-    return localStorage.getItem('role') || '';
+  public getRole() : string | null {
+    return localStorage.getItem('role') || null;
   }
 
   public setToken(jwtToken: string) {
     localStorage.setItem('jwtToken', jwtToken);
   }
 
-  public getToken() : string {
-    return localStorage.getItem('jwtToken') || '';
+  public getToken() : string | null {
+    return localStorage.getItem('jwtToken') || null;
   }
 
   public clear() {

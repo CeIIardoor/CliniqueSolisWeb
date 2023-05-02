@@ -20,7 +20,7 @@ export const routes: Routes = [
   {path: routeNames.index, component: IndexComponent},
   {path: routeNames.dashboard, component: AdminComponent, canActivate: [AuthGuard], data: {roles: ["ROLE_ADMIN"]}},
   {path: routeNames.home, component: HomeComponent, canActivate: [AuthGuard], data: {roles: ["ROLE_ADMIN", "ROLE_UTILISATEUR"]}},
-  {path: routeNames.login, component: LoginComponent},
+  {path: routeNames.login, component: LoginComponent, canActivate: [AuthGuard]},
   {path: routeNames.register, component: RegisterComponent},
   {path: routeNames.forbidden, component: ForbiddenComponent},
 ];

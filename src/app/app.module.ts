@@ -18,6 +18,7 @@ import {AuthMiddlewareInterceptor} from "./_auth/auth-middleware.interceptor";
 import {NgOptimizedImage} from "@angular/common";
 import { FooterComponent } from './layouts/footer/footer.component';
 import { UsersDashboardComponent } from './admin/users-dashboard/users-dashboard.component';
+import { NotFoundComponent } from './layouts/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { UsersDashboardComponent } from './admin/users-dashboard/users-dashboard
     HeaderComponent,
     ForbiddenComponent,
     FooterComponent,
-    UsersDashboardComponent
+    UsersDashboardComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

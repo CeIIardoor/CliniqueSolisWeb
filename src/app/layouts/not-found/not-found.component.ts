@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import {routeNames} from "../../routes";
 
 @Component({
-  selector: 'app-forbidden',
-  templateUrl: './forbidden.component.html',
-
+  selector: 'app-not-found',
+  templateUrl: './not-found.component.html'
 })
-export class ForbiddenComponent {
+export class NotFoundComponent {
+
   protected readonly routeNames = routeNames;
 }

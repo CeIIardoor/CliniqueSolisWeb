@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './_auth/login/login.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { ForbiddenComponent } from './layouts/forbidden/forbidden.component';
 import { FormsModule } from '@angular/forms';
@@ -17,6 +17,7 @@ import { LoginService } from './_auth/login.service';
 import {AuthMiddlewareInterceptor} from "./_auth/auth-middleware.interceptor";
 import {NgOptimizedImage} from "@angular/common";
 import { FooterComponent } from './layouts/footer/footer.component';
+import { UsersDashboardComponent } from './admin/users-dashboard/users-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FooterComponent } from './layouts/footer/footer.component';
     LoginComponent,
     HeaderComponent,
     ForbiddenComponent,
-    FooterComponent
+    FooterComponent,
+    UsersDashboardComponent
   ],
   imports: [
     BrowserModule,

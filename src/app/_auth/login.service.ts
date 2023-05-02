@@ -1,12 +1,12 @@
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import {UserAuthService} from "./user-auth.service";
+import {Injectable} from "@angular/core";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {AuthService} from "./auth.service";
 import {routeNames} from "../routes";
 
 @Injectable({
   providedIn: "root"
 })
-export class UserService {
+export class LoginService {
 
   BACKEND_PATH = "http://localhost:8080/api/auth/";
   requestHeader = new HttpHeaders(
@@ -17,17 +17,15 @@ export class UserService {
 
   constructor(
     private httpClient: HttpClient,
-    private userAuthService: UserAuthService
+    private userAuthService: AuthService
   ) {
-
   }
 
   public login(email: String, password: String) {
-
     return this.httpClient.post(
       this.BACKEND_PATH + routeNames.login,
-      { email, password },
-      { headers: this.requestHeader });
+      {email, password},
+      {headers: this.requestHeader});
   }
 
   public hasAuthorization(allowedRoles: string[]): boolean {
@@ -37,4 +35,5 @@ export class UserService {
     }
     return allowedRoles.includes(userRole);
   }
+
 }

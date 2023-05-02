@@ -1,6 +1,6 @@
 import {HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
 import {catchError, throwError} from "rxjs";
-import {UserAuthService} from "../_services/user-auth.service";
+import {AuthService} from "./auth.service";
 import {Router} from "@angular/router";
 import {Injectable} from "@angular/core";
 import {routeNames} from "../routes";
@@ -9,7 +9,7 @@ import {routeNames} from "../routes";
 export class AuthMiddlewareInterceptor implements HttpInterceptor {
 
   constructor(
-    private UserAuthService: UserAuthService,
+    private UserAuthService: AuthService,
     private router: Router
   ) {}
 

@@ -7,16 +7,16 @@ import { IndexComponent } from './index/index.component';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { HeaderComponent } from './header/header.component';
-import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { HeaderComponent } from './layouts/header/header.component';
+import { ForbiddenComponent } from './layouts/forbidden/forbidden.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from './_auth/auth.guard';
-import { UserService } from './_services/user.service';
+import { LoginService } from './_auth/login.service';
 import {AuthMiddlewareInterceptor} from "./_auth/auth-middleware.interceptor";
 import {NgOptimizedImage} from "@angular/common";
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './layouts/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +44,7 @@ import { FooterComponent } from './footer/footer.component';
       useClass:AuthMiddlewareInterceptor,
       multi:true
     },
-    UserService
+    LoginService
   ],
   bootstrap: [AppComponent]
 })

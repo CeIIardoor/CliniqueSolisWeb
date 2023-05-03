@@ -19,7 +19,7 @@ export class AuthMiddlewareInterceptor implements HttpInterceptor {
       return next.handle(req.clone());
     }
 
-    const token = this.UserAuthService.getToken();
+    const token = this.UserAuthService.getJwtToken();
 
     if (token != null) {
       req = this.addToken(req, token);

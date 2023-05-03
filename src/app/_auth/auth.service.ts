@@ -15,12 +15,20 @@ export class AuthService {
     return localStorage.getItem('role') || null;
   }
 
-  public setToken(jwtToken: string) {
+  public setJwtToken(jwtToken: string) {
     localStorage.setItem('jwtToken', jwtToken);
   }
 
-  public getToken() : string | null {
+  public getJwtToken() : string | null {
     return localStorage.getItem('jwtToken') || null;
+  }
+
+  public setRefreshToken(refreshToken: string) {
+    localStorage.setItem('refreshToken', refreshToken);
+  }
+
+  public getRefreshToken() : string | null {
+    return localStorage.getItem('refreshToken') || null;
   }
 
   public clear() {
@@ -29,6 +37,6 @@ export class AuthService {
   }
 
   public isAuthenticated() : boolean {
-    return !!(this.getToken() && this.getRole());
+    return !!(this.getJwtToken() && this.getRole());
   }
 }

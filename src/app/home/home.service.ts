@@ -7,11 +7,11 @@ import { Observable } from 'rxjs';
 })
 export class HomeService {
 
-  BACKEND_PATH = "http://localhost:8080/api/demo-controller/";
+  BACKEND_URL = "http://localhost:8080/api/demo-controller/";
 
   constructor(private http: HttpClient) { }
 
   getHelloMessage(): Observable<string> {
-    return this.http.get<string>(this.BACKEND_PATH + "user");
+    return this.http.get<string>(this.BACKEND_URL + "user");
   }
 }

@@ -8,7 +8,7 @@ import {routeNames} from "../routes";
 })
 export class LoginService {
 
-  BACKEND_PATH = "http://localhost:8080/api/auth/";
+  BACKEND_URL = "http://localhost:8080/api/auth/";
   requestHeader = new HttpHeaders(
     {
       "No-Auth": "True"
@@ -23,7 +23,7 @@ export class LoginService {
 
   public login(email: String, password: String) {
     return this.httpClient.post(
-      this.BACKEND_PATH + routeNames.login,
+      this.BACKEND_URL + routeNames.login,
       {email, password},
       {headers: this.requestHeader});
   }

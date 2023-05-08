@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {User} from "./Models/User";
+import {UserInterface} from "./Models/UserInterface";
 
 @Component({
   selector: 'app-users-dashboard',
@@ -8,9 +8,9 @@ import {User} from "./Models/User";
 })
 export class UsersDashboardComponent implements OnInit{
 
-  public users : User[] = [];
-  public viewTarget : User | null = null;
-  public editTarget : User | null = null;
+  public users : UserInterface[] = [];
+  public viewTarget : UserInterface | null = null;
+  public editTarget : UserInterface | null = null;
   BACKEND_URL = 'http://localhost:8080/api/user/';
 
   constructor(
@@ -25,12 +25,12 @@ export class UsersDashboardComponent implements OnInit{
     )
   }
   setViewTarget(id: number) : void {
-    this.viewTarget = this.users.find(user => user.id == id) as User;
+    this.viewTarget = this.users.find(user => user.id == id) as UserInterface;
     console.log(this.viewTarget);
   }
 
   setEditTarget(id: number) : void {
-    this.editTarget = this.users.find(user => user.id == id) as User;
+    this.editTarget = this.users.find(user => user.id == id) as UserInterface;
     console.log(this.editTarget);
   }
 }

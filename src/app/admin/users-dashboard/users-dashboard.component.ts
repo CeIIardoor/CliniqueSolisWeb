@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {UserInterface} from "./Models/UserInterface";
+import {UserInterface} from "./ViewModels/UserInterface";
 
 @Component({
   selector: 'app-users-dashboard',
@@ -24,13 +24,44 @@ export class UsersDashboardComponent implements OnInit{
       }
     )
   }
-  setViewTarget(id: number) : void {
+
+  toggleBackgroundBlur(blur : boolean) : void {
+    if (blur) {
+      const bg = document.getElementById('bg');
+      bg?.classList.add('bg-black', 'opacity-50', 'top-0', 'left-0', 'w-full', 'h-full', 'fixed', 'z-40');
+    } else {
+      const bg = document.getElementById('bg');
+      bg?.classList.remove('bg-black', 'opacity-50', 'top-0', 'left-0', 'w-full', 'h-full', 'fixed', 'z-40');
+    }
+  }
+  openViewModal(id: number) : void {
+    const modal = document.getElementById('viewUserModal');
+    modal?.classList.remove('hidden');
+    this.toggleBackgroundBlur(true);
     this.viewTarget = this.users.find(user => user.id == id) as UserInterface;
     console.log(this.viewTarget);
+
   }
 
-  setEditTarget(id: number) : void {
+  closeViewModal() {
+    const modal = document.getElementById('viewUserModal');
+    modal?.classList.add('hidden');
+    this.toggleBackgroundBlur(false);
+    this.viewTarget = null;
+  }
+
+  openEditModal(id: number) : void {
     this.editTarget = this.users.find(user => user.id == id) as UserInterface;
+    const modal = document.getElementById('editUserModal');
+    modal?.classList.remove('hidden');
+    this.toggleBackgroundBlur(true);
     console.log(this.editTarget);
+  }
+
+  closeEditModal() {
+    const modal = document.getElementById('editUserModal');
+    modal?.classList.add('hidden');
+    this.toggleBackgroundBlur(false);
+    this.editTarget = null;
   }
 }

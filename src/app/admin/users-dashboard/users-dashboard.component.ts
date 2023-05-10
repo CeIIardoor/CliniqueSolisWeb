@@ -11,7 +11,7 @@ export class UsersDashboardComponent implements OnInit, OnDestroy {
   public users: UserInterface[] = [];
   public viewTarget: UserInterface | null = null;
   public editTarget: UserInterface | null = null;
-  BACKEND_URL = 'http://localhost:8080/api/';
+  BACKEND_URL = 'http://localhost:8080/api/user';
 
   constructor(
     private httpClient: HttpClient
@@ -19,7 +19,7 @@ export class UsersDashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.httpClient.get(this.BACKEND_URL + 'user/all').subscribe(
+    this.httpClient.get(this.BACKEND_URL + '/all').subscribe(
       (data: any) => {
         this.users = data.users;
       }
@@ -89,7 +89,7 @@ export class UsersDashboardComponent implements OnInit, OnDestroy {
   }
 
   private changeUserList() {
-    this.httpClient.get(this.BACKEND_URL + 'user/all').subscribe(
+    this.httpClient.get(this.BACKEND_URL + '/all').subscribe(
       (data: any) => {
         this.users = data.users;
       }

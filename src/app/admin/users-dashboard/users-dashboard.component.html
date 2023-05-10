@@ -82,18 +82,22 @@
         <td class="px-6 py-4">
           {{user.role.charAt(5) + user.role.slice(6).toLowerCase()}}
         </td>
-        <td class="px-6 py-4">
+        <td
+          *ngIf="user.isActive"
+          class="px-6 py-4">
           <div class="flex items-center">
             <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>
             Active
           </div>
         </td>
-        <!--        <td class="px-6 py-4">-->
-        <!--          <div class="flex items-center">-->
-        <!--            <div class="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div>-->
-        <!--            Inactive-->
-        <!--          </div>-->
-        <!--        </td>-->
+        <td
+          *ngIf="!user.isActive"
+          class="px-6 py-4">
+          <div class="flex items-center">
+            <div class="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div>
+            Inactive
+          </div>
+        </td>
         <td class="px-6 pl-4">
           <div class="flex flex-row gap-2 justify-center">
             <!-- Modal toggle -->

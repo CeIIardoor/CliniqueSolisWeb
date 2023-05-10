@@ -81,7 +81,7 @@ export class UsersDashboardComponent implements OnInit, OnDestroy {
     }
 
     if (user.role == "ROLE_UTILISATEUR") {
-      this.httpClient.delete(this.BACKEND_URL + "delete/" + id).subscribe(() => {
+      this.httpClient.delete(this.BACKEND_URL + "/delete/" + id).subscribe(() => {
         this.changeUserList()
       })
     }

@@ -11,7 +11,7 @@ export class UsersDashboardComponent implements OnInit, OnDestroy {
   public users: UserInterface[] = [];
   public viewTarget: UserInterface | null = null;
   public editTarget: UserInterface | null = null;
-  BACKEND_URL = 'http://localhost:8080/api/user/';
+  BACKEND_URL = 'http://localhost:8080/api/';
 
   constructor(
     private httpClient: HttpClient
@@ -19,7 +19,7 @@ export class UsersDashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.httpClient.get(this.BACKEND_URL + 'all').subscribe(
+    this.httpClient.get(this.BACKEND_URL + 'user/all').subscribe(
       (data: any) => {
         this.users = data.users;
       }
@@ -71,5 +71,28 @@ export class UsersDashboardComponent implements OnInit, OnDestroy {
     modal?.classList.add('hidden');
     this.toggleBackgroundBlur(false);
     this.editTarget = null;
+  }
+
+  deleteUser(id: number): void {
+    let user = this.users.find(user => user.id == id) as UserInterface;
+    if (user.role == "ROLE_ADMIN") {
+      alert("You cannot delete an admin");
+      return;
+    }
+
+    if (user.role == "ROLE_UTILISATEUR") {
+      this.httpClient.delete(this.BACKEND_URL + "user/delete/" + id).subscribe(() => {
+        this.changeUserList()
+      })
+    }
+    document.getElementById('user-' + id)?.remove();
+  }
+
+  private changeUserList() {
+    this.httpClient.get(this.BACKEND_URL + 'user/all').subscribe(
+      (data: any) => {
+        this.users = data.users;
+      }
+    )
   }
 }

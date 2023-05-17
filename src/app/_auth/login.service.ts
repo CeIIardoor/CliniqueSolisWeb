@@ -2,13 +2,14 @@ import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {AuthService} from "./auth.service";
 import {routeNames} from "../routes";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: "root"
 })
 export class LoginService {
 
-  BACKEND_URL = "http://localhost:8080/api/auth/";
+  BACKEND_URL = `${environment.apiURL}/api/auth/`;
   requestHeader = new HttpHeaders(
     {
       "No-Auth": "True"

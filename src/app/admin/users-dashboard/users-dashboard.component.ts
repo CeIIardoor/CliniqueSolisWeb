@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {UserInterface} from "./ViewModels/UserInterface";
+import {UserInterface} from "./Interfaces/UserInterface";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-users-dashboard',
@@ -11,7 +12,7 @@ export class UsersDashboardComponent implements OnInit, OnDestroy {
   public users: UserInterface[] = [];
   public viewTarget: UserInterface | null = null;
   public editTarget: UserInterface | null = null;
-  BACKEND_URL = 'http://localhost:8080/api/user';
+  BACKEND_URL = `${environment.apiURL}/api/user`;
 
   constructor(
     private httpClient: HttpClient

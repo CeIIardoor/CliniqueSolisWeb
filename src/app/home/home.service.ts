@@ -7,11 +7,10 @@ import { Observable } from 'rxjs';
 })
 export class HomeService {
 
-  BACKEND_URL = "http://localhost:8080/api/demo-controller/";
 
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
-  getHelloMessage(): Observable<string> {
-    return this.http.get<string>(this.BACKEND_URL + "user");
+  getHelloMessage(): String {
+    return "Home"
   }
 }

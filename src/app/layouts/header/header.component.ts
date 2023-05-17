@@ -3,12 +3,15 @@ import { AuthService } from "../../_auth/auth.service";
 import { Router } from "@angular/router";
 import {routeNames} from "../../routes";
 import {HttpClient} from "@angular/common/http";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
 })
 export class HeaderComponent implements OnInit {
+
+  BACKEND_URL = environment.apiURL;
   constructor(
     private userAuthService: AuthService,
     private router: Router,
@@ -26,7 +29,7 @@ export class HeaderComponent implements OnInit {
   }
   logout() {
     //get request to /api/auth/logout with jwt token as bearer
-    this.httpClient.get('http://localhost:8080/api/auth/logout', {
+    this.httpClient.get(`${this.BACKEND_URL}/api/auth/logout`, {
       headers: {
         'Authorization': 'Bearer ' + this.userAuthService.getJwtToken()
       }

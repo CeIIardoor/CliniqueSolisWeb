@@ -8,29 +8,48 @@
       Create a Free Account
     </h2>
     <form (ngSubmit)="onSubmit()" class="mt-8 space-y-6" action="#">
-      <div>
-        <label for="FirstName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nom:</label>
-        <input type="text" [(ngModel)]="formRegister.nom" name="FirstName" id="FirstName" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Nom" required>
-      </div>
-      <div>
-        <label for="SecondName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Prénom:</label>
-        <input type="text" [(ngModel)]="formRegister.prenom" name="SecondName" id="SecondName" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Prénom" required>
-      </div>
-      <div>
-        <label for="CIN" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">CIN:</label>
-        <input type="text" [(ngModel)]="formRegister.cin" name="CIN" id="CIN" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="CIN" required>
-      </div>
-      <div>
-        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email:</label>
-        <input type="email" [(ngModel)]="formRegister.email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="name@company.com" required>
-      </div>
-      <div>
-        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password:</label>
-        <input type="password" [(ngModel)]="formRegister.mdp" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required>
-      </div>
-      <div>
-        <label for="confirm-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm password:</label>
-        <input type="password" [(ngModel)]="formRegister.mdp" name="confirm-password" id="confirm-password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required>
+      <div class="grid grid-cols-6 gap-6">
+        <div class="col-span-6 sm:col-span-3">
+          <label for="prenomAdd" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Prénom</label>
+          <input type="text" name="prenom" [(ngModel)]="formRegister.prenom" id="prenomAdd"
+                 class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                 placeholder="Prénom" required>
+        </div>
+        <div class="col-span-6 sm:col-span-3">
+          <label for="nomAdd"
+                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nom</label>
+          <input type="text" name="nom" [(ngModel)]="formRegister.nom" id="nomAdd"
+                 class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                 placeholder="Nom" required>
+        </div>
+        <div class="col-span-6 sm:col-span-3">
+          <label for="passwordAdd"
+                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mot de passe</label>
+          <input type="text" name="CIN" [(ngModel)]="formRegister.cin" id="cinAdd"
+                 class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                 placeholder="CIN" required>
+        </div>
+        <div class="col-span-6 sm:col-span-3">
+          <label for="emailAdd"
+                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+          <input type="email" name="email" [(ngModel)]="formRegister.email" id="emailAdd"
+                 class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                 placeholder="name@email.com"  required>
+        </div>
+        <div class="col-span-6 sm:col-span-3">
+          <label for="passwordAdd"
+                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mot de passe</label>
+          <input type="password" name="password" [(ngModel)]="formRegister.mdp" id="passwordAdd"
+                 class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                 placeholder="••••••••"required>
+        </div>
+        <div class="col-span-6 sm:col-span-3">
+          <label for="passwordAdd"
+                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mot de passe</label>
+          <input type="password" name="password" [(ngModel)]="formRegister.mdp" id="confirm-passwordAdd"
+                 class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                 placeholder="••••••••" required>
+        </div>
       </div>
       <div class="flex items-start">
         <div class="flex items-center h-5">

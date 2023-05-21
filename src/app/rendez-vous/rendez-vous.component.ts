@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {IPatientRegister} from "./PatientModel/ipatient-register";
 import {HttpClient} from "@angular/common/http";
+import {environment} from "../../environments/environment";
 
 
 @Component({
@@ -10,7 +11,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class RendezVousComponent implements OnInit{
 
-  BACKEND_URL = 'http://localhost:8080/api/patient/';
+  BACKEND_URL = `${environment.apiURL}/api/patient/`;
 
   formRegister:IPatientRegister ={
     nom:"",
@@ -25,9 +26,6 @@ export class RendezVousComponent implements OnInit{
     this.http.post(this.BACKEND_URL +"create", this.formRegister).subscribe(
       (response) => {
         console.log("Patient has been registered successfully", response);
-      },
-      (error) => {
-        console.log("An error has occurred", error);
       }
     );
   }

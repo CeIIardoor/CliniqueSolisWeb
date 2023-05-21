@@ -19,6 +19,7 @@ import {NgOptimizedImage} from "@angular/common";
 import { FooterComponent } from './layouts/footer/footer.component';
 import { UsersDashboardComponent } from './admin/users-dashboard/users-dashboard.component';
 import { NotFoundComponent } from './layouts/not-found/not-found.component';
+import { RendezVousComponent } from './rendez-vous/rendez-vous.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { NotFoundComponent } from './layouts/not-found/not-found.component';
     ForbiddenComponent,
     FooterComponent,
     UsersDashboardComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    RendezVousComponent
   ],
   imports: [
     BrowserModule,

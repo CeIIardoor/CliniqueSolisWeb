@@ -14,6 +14,10 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.homeService.getHelloMessage();
+    this.homeService.getHelloMessage().subscribe(
+      (data) => {
+        this.helloMessage = data.message;
+      }
+    )
   }
 }

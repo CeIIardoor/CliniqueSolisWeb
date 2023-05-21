@@ -180,6 +180,7 @@ export class UsersDashboardComponent implements OnInit, OnDestroy {
         )
       }
     );
+    this.closeAddModal();
   }
 
   closeAddModal() {

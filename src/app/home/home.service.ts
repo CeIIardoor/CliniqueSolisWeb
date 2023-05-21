@@ -10,7 +10,11 @@ export class HomeService {
 
   constructor() { }
 
-  getHelloMessage(): String {
-    return "Home"
+  getHelloMessage(): Observable<any> {
+    return new Observable<any>(observer => {
+      setTimeout(() => {
+        observer.next({ message: "Hello World!" });
+      }, 200);
+    });
   }
 }

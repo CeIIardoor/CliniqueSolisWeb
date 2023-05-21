@@ -43,6 +43,6 @@ export class UsersDashboardService {
       email: userData.email,
       password: userData.password,
     }
-    return this.http.post(`${environment.apiURL}/api/auth/register`, UserRequest);
+    return this.http.post(`${environment.apiURL}/api/user/create`, UserRequest);
   }
 }

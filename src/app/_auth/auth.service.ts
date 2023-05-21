@@ -34,6 +34,7 @@ export class AuthService {
   public clear() {
     localStorage.removeItem('role');
     localStorage.removeItem('jwtToken');
+    localStorage.removeItem('refreshToken');
   }
 
   public isAuthenticated() : boolean {

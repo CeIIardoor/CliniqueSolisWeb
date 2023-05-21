@@ -4,6 +4,6 @@ export const environment = {
 
   title: 'Clinique Solis Local',
 
-  apiURL: 'http://localhost:8000'
+  apiURL: 'http://localhost:8080'
 
 };

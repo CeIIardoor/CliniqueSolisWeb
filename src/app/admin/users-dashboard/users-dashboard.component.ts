@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {UserInterface} from "./Interfaces/UserInterface";
-import {environment} from "../../../environments/environment";
+import {UsersDashboardService} from "./Services/users-dashboard.service";
 
 @Component({
   selector: 'app-users-dashboard',
@@ -12,19 +12,18 @@ export class UsersDashboardComponent implements OnInit, OnDestroy {
   public users: UserInterface[] = [];
   public viewTarget: UserInterface | null = null;
   public editTarget: UserInterface | null = null;
-  BACKEND_URL = `${environment.apiURL}/api/user`;
 
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private usersDashboardService: UsersDashboardService
   ) {
   }
 
   ngOnInit(): void {
-    this.httpClient.get(this.BACKEND_URL + '/all').subscribe(
-      (data: any) => {
-        this.users = data.users;
+    this.usersDashboardService.getAllUsers().subscribe((data: UserInterface[]) => {
+      this.users = data;
       }
-    )
+    );
   }
 
   ngOnDestroy(): void {
@@ -74,7 +73,7 @@ export class UsersDashboardComponent implements OnInit, OnDestroy {
     this.editTarget = null;
   }
 
-  deleteUser(id: number): void {
+  deleteUser(id: number) {
     let user = this.users.find(user => user.id == id) as UserInterface;
     if (user.role == "ROLE_ADMIN") {
       alert("You cannot delete an admin");
@@ -82,18 +81,9 @@ export class UsersDashboardComponent implements OnInit, OnDestroy {
     }
 
     if (user.role == "ROLE_UTILISATEUR") {
-      this.httpClient.delete(this.BACKEND_URL + "/delete/" + id).subscribe(() => {
-        this.changeUserList()
-      })
+      this.usersDashboardService.deleteUserById(id);
+      this.usersDashboardService.getAllUsers();
     }
     document.getElementById('user-' + id)?.remove();
-  }
-
-  private changeUserList() {
-    this.httpClient.get(this.BACKEND_URL + '/all').subscribe(
-      (data: any) => {
-        this.users = data.users;
-      }
-    )
   }
 }

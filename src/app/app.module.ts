@@ -9,7 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './_auth/login/login.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { ForbiddenComponent } from './layouts/forbidden/forbidden.component';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from './_auth/auth.guard';
@@ -39,7 +39,8 @@ import { NotFoundComponent } from './layouts/not-found/not-found.component';
     FormsModule,
     HttpClientModule,
     RouterModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    ReactiveFormsModule
   ],
   providers: [
     AuthGuard,

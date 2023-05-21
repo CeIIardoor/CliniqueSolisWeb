@@ -1,7 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {UserInterface} from "./Interfaces/UserInterface";
 import {UsersDashboardService} from "./Services/users-dashboard.service";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {debounceTime, distinctUntilChanged, filter, fromEvent, tap} from "rxjs";
 
 @Component({
   selector: 'app-users-dashboard',
@@ -9,29 +11,71 @@ import {UsersDashboardService} from "./Services/users-dashboard.service";
 })
 export class UsersDashboardComponent implements OnInit, OnDestroy {
 
-  public users: UserInterface[] = [];
-  public viewTarget: UserInterface | null = null;
-  public editTarget: UserInterface | null = null;
 
+  // PROPERTIES
+  users: UserInterface[] = [];
+  viewTarget: UserInterface | null = null;
+  editTarget: UserInterface | null = null;
+  @ViewChild('searchInput') searchInputValue: ElementRef | undefined;
+  editForm : FormGroup = this.formBuilder.group({
+    nom: [this.editTarget?.nom],
+    prenom: [this.editTarget?.prenom],
+    email: [this.editTarget?.email],
+    role: [this.editTarget?.role],
+  });
+
+  addForm: FormGroup = this.formBuilder.group({
+    nom: [''],
+    prenom: [''],
+    email: [''],
+    password: [''],
+  }
+  );
+
+  // CONSTRUCTOR
   constructor(
     private httpClient: HttpClient,
-    private usersDashboardService: UsersDashboardService
+    private usersDashboardService: UsersDashboardService,
+    private formBuilder: FormBuilder,
   ) {
   }
 
-  ngOnInit(): void {
-    this.usersDashboardService.getAllUsers().subscribe((data: UserInterface[]) => {
-      this.users = data;
-      }
-    );
-  }
 
+  // LIFECYCLE HOOKS
+  ngOnInit(): void {
+    this.usersDashboardService.getAllUsers().subscribe(
+      (data) => {
+        this.users = data.users;
+      }
+    )
+  }
+  ngAfterViewInit() {
+    fromEvent(this.searchInputValue?.nativeElement,'keyup')
+      .pipe(
+        filter(Boolean),
+        debounceTime(150),
+        distinctUntilChanged(),
+        tap(() => {
+          console.log(this.searchInputValue?.nativeElement.value)
+        })
+      )
+      .subscribe(
+        () => {
+          this.usersDashboardService.searchUser(this.searchInputValue?.nativeElement.value).subscribe(
+            (data) => {
+              this.users = data.users;
+            }
+          )
+        }
+      );
+  }
   ngOnDestroy(): void {
     this.viewTarget = null;
     this.editTarget = null;
     this.users = [];
   }
 
+  // METHODS
   toggleBackgroundBlur(blur: boolean): void {
     if (blur) {
       const bg = document.getElementById('bg');
@@ -58,8 +102,12 @@ export class UsersDashboardComponent implements OnInit, OnDestroy {
     this.viewTarget = null;
   }
 
-  openEditModal(id: number): void {
-    this.editTarget = this.users.find(user => user.id == id) as UserInterface;
+  openEditModal(user: UserInterface): void {
+    if (user.role == "ROLE_ADMIN") {
+      alert("Vous ne pouvez pas modifier un admin");
+      return;
+    }
+    this.editTarget = this.users.find(u => u.id == user.id) as UserInterface;
     const modal = document.getElementById('editUserModal');
     modal?.classList.remove('hidden');
     this.toggleBackgroundBlur(true);
@@ -81,9 +129,68 @@ export class UsersDashboardComponent implements OnInit, OnDestroy {
     }
 
     if (user.role == "ROLE_UTILISATEUR") {
-      this.usersDashboardService.deleteUserById(id);
-      this.usersDashboardService.getAllUsers();
+      this.usersDashboardService.deleteUserById(id).subscribe(
+        (data) => {
+          console.log(data);
+          this.usersDashboardService.getAllUsers().subscribe(
+            (data) => {
+              this.users = data.users;
+            }
+          );
+        }
+      );
     }
-    document.getElementById('user-' + id)?.remove();
+  }
+
+  onEditFormSubmit(userId: number | undefined) {
+    let userData = {
+      nom : this.editForm.value.nom,
+      prenom: this.editForm.value.prenom,
+      email: this.editForm.value.email,
+      role: this.editForm.value.role,
+    }
+    console.log(userData);
+    this.usersDashboardService.updateUser(userId, userData).subscribe(
+      (data) => {
+        console.log(data);
+        this.usersDashboardService.getAllUsers().subscribe(
+          (data) => {
+            this.users = data.users;
+          }
+        )
+      }
+    );
+    this.closeEditModal();
+  }
+
+  onAddFormSubmit() {
+    let userData = {
+      nom : this.addForm.value.nom,
+      prenom: this.addForm.value.prenom,
+      email: this.addForm.value.email,
+      password: this.addForm.value.password,
+    }
+    this.usersDashboardService.addUser(userData).subscribe(
+      (data) => {
+        console.log(data);
+        this.usersDashboardService.getAllUsers().subscribe(
+          (data) => {
+            this.users = data.users;
+          }
+        )
+      }
+    );
+  }
+
+  closeAddModal() {
+    const modal = document.getElementById('addUserModal');
+    modal?.classList.add('hidden');
+    this.toggleBackgroundBlur(false);
+  }
+
+  openAddModal() {
+    const modal = document.getElementById('addUserModal');
+    modal?.classList.remove('hidden');
+    this.toggleBackgroundBlur(true);
   }
 }

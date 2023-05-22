@@ -8,6 +8,9 @@ export class CorsInterceptor implements HttpInterceptor {
     const modifiedRequest = request.clone({
       setHeaders: {
         'Access-Control-Allow-Origin': 'https://cliniquesolis.cellardoor.info',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Credentials': 'true'
         // Add any other required headers here
       }
     });

@@ -4,6 +4,6 @@ export const environment = {
 
   title: 'Clinique Solis PFA',
 
-  apiURL: 'https://cliniquesolis.cellardoor.info'
+  apiURL: 'https://cliniquesolisbackend.cellardoor.info'
 
 };

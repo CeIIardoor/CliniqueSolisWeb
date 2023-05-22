@@ -20,6 +20,7 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { UsersDashboardComponent } from './admin/users-dashboard/users-dashboard.component';
 import { NotFoundComponent } from './layouts/not-found/not-found.component';
 import { RendezVousComponent } from './rendez-vous/rendez-vous.component';
+import {CorsInterceptor} from "./_auth/cors-middleware.interceptor";
 
 @NgModule({
   declarations: [
@@ -50,6 +51,11 @@ import { RendezVousComponent } from './rendez-vous/rendez-vous.component';
       provide: HTTP_INTERCEPTORS,
       useClass:AuthMiddlewareInterceptor,
       multi:true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CorsInterceptor,
+      multi: true
     },
     LoginService
   ],

@@ -1,9 +1,9 @@
 export const environment = {
 
-  production: false,
+  production: true,
 
   title: 'Clinique Solis Local',
 
-  apiURL: 'http://localhost:8080'
+  apiURL: 'https://prod.com'
 
 };

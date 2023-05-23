@@ -4,18 +4,14 @@ import {Observable} from "rxjs";
 @Injectable()
 export class CorsInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // Modify the request to include CORS headers
-    const modifiedRequest = request.clone({
-      setHeaders: {
-        'Access-Control-Allow-Origin': 'https://cliniquesolis.cellardoor.info',
-        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Credentials': 'true'
-        // Add any other required headers here
-      }
-    });
-
-    // Pass the modified request to the next interceptor or to the HTTP handler
+    // const modifiedRequest = request.clone({
+    //   setHeaders: {
+    //     'Access-Control-Allow-Origin': 'https://linktobackend',
+    //     'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
+    //     'Access-Control-Allow-Headers': 'Content-Type',
+    //   }
+    // });
+    const modifiedRequest = request.clone();
     return next.handle(modifiedRequest);
   }
 }

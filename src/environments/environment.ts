@@ -4,6 +4,6 @@ export const environment = {
 
   title: 'Clinique Solis Local',
 
-  apiURL: 'https://backendspring.com'
+  apiURL: 'https://springcliniquesolis.lemonground-a2cc5353.westeurope.azurecontainerapps.io'
 
 };

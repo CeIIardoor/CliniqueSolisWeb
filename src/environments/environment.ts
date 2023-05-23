@@ -4,6 +4,6 @@ export const environment = {
 
   title: 'Clinique Solis Local',
 
-  apiURL: 'https://prod.com'
+  apiURL: 'https://backendspring.com'
 
 };

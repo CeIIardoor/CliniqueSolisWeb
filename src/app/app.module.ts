@@ -20,6 +20,7 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { UsersDashboardComponent } from './admin/users-dashboard/users-dashboard.component';
 import { NotFoundComponent } from './layouts/not-found/not-found.component';
 import { RendezVousComponent } from './rendez-vous/rendez-vous.component';
+import {CorsInterceptor} from "./_auth/cors-middleware.interceptor";
 import { RegisterPatientComponent } from './register-patient/register-patient.component';
 import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
@@ -37,8 +38,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     FooterComponent,
     UsersDashboardComponent,
     NotFoundComponent,
-    RendezVousComponent,
-    RegisterPatientComponent
+    RendezVousComponent
   ],
   imports: [
     BrowserModule,
@@ -47,10 +47,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     HttpClientModule,
     RouterModule,
     NgOptimizedImage,
-    ReactiveFormsModule,
-    ButtonModule,
-    CalendarModule,
-    FullCalendarModule,
+    ReactiveFormsModule
   ],
   providers: [
     AuthGuard,

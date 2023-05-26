@@ -1,9 +1,9 @@
 export const environment = {
 
-  production: false,
+  production: true,
 
-  title: 'Clinique Solis Local',
+  title: 'Clinique Solis PFA',
 
-  apiURL: 'http://localhost:8080'
+  apiURL: 'https://cliniquesolisjar.gentlefield-40fba589.westeurope.azurecontainerapps.io'
 
 };

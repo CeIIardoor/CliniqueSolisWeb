@@ -21,7 +21,10 @@ import { UsersDashboardComponent } from './admin/users-dashboard/users-dashboard
 import { NotFoundComponent } from './layouts/not-found/not-found.component';
 import { RendezVousComponent } from './rendez-vous/rendez-vous.component';
 import {CorsInterceptor} from "./_auth/cors-middleware.interceptor";
-
+import { RegisterPatientComponent } from './register-patient/register-patient.component';
+import { ButtonModule } from 'primeng/button';
+import { CalendarModule } from 'primeng/calendar';
+import { FullCalendarModule } from '@fullcalendar/angular';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +37,8 @@ import {CorsInterceptor} from "./_auth/cors-middleware.interceptor";
     FooterComponent,
     UsersDashboardComponent,
     NotFoundComponent,
-    RendezVousComponent
+    RendezVousComponent,
+    RegisterPatientComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,9 @@ import {CorsInterceptor} from "./_auth/cors-middleware.interceptor";
     HttpClientModule,
     RouterModule,
     NgOptimizedImage,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FullCalendarModule,
+    ButtonModule
   ],
   providers: [
     AuthGuard,
@@ -51,11 +57,6 @@ import {CorsInterceptor} from "./_auth/cors-middleware.interceptor";
       provide: HTTP_INTERCEPTORS,
       useClass:AuthMiddlewareInterceptor,
       multi:true
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: CorsInterceptor,
-      multi: true
     },
     LoginService
   ],

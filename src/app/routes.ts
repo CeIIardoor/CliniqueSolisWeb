@@ -8,6 +8,7 @@ import {UsersDashboardComponent} from "./admin/users-dashboard/users-dashboard.c
 import {AdminComponent} from "./admin/admin.component";
 import {NotFoundComponent} from "./layouts/not-found/not-found.component";
 import { RendezVousComponent } from './rendez-vous/rendez-vous.component';
+import {RegisterPatientComponent} from "./register-patient/register-patient.component";
 export const routeNames = {
   index: '',
   dashboard: 'dashboard',
@@ -17,6 +18,7 @@ export const routeNames = {
   notFound: 'notfound',
   usersDashboard: 'dashboard/users',
   rendezVous: 'rendez-vous',
+  registerPatient:"register-patient"
 }
 
 export const routes: Routes = [
@@ -27,5 +29,7 @@ export const routes: Routes = [
   {path: routeNames.usersDashboard, component: UsersDashboardComponent, canActivate: [AuthGuard], data: {roles: ["ROLE_ADMIN"]}},
   {path: routeNames.forbidden, component: ForbiddenComponent},
   {path: routeNames.rendezVous, component: RendezVousComponent},
+  {path: routeNames.registerPatient, component:RegisterPatientComponent},
+
   {path: '**', component: NotFoundComponent},
 ];

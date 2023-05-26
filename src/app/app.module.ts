@@ -25,7 +25,6 @@ import { RegisterPatientComponent } from './register-patient/register-patient.co
 import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
 import { FullCalendarModule } from '@fullcalendar/angular';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +37,8 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     FooterComponent,
     UsersDashboardComponent,
     NotFoundComponent,
-    RendezVousComponent
+    RendezVousComponent,
+    RegisterPatientComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +47,9 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     HttpClientModule,
     RouterModule,
     NgOptimizedImage,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FullCalendarModule,
+    ButtonModule
   ],
   providers: [
     AuthGuard,

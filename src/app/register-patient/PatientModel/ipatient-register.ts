@@ -4,4 +4,5 @@ export interface IPatientRegister {
   cin:string;
   email: string;
   mdp:  string;
+  mdpConfirmation: string;
 }

@@ -1,20 +1,10 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {IPatientRegister} from "../register-patient/PatientModel/ipatient-register";
-import {HttpClient} from "@angular/common/http";
-import {environment} from "../../environments/environment";
-import {Calendar,CalendarOptions, DateSelectArg, EventApi, EventClickArg} from '@fullcalendar/core';
+import {ChangeDetectorRef, Component} from '@angular/core';
+import {CalendarOptions, DateSelectArg, EventApi, EventClickArg} from '@fullcalendar/core';
 import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
-import {createEventId, INITIAL_EVENTS} from "./event-utils";
-import {FormGroup} from "@angular/forms";
-import {FormBuilder} from "@angular/forms";
-import {debounceTime, distinctUntilChanged, filter, fromEvent, tap} from "rxjs";
-
-
-
-
+import {INITIAL_EVENTS} from "./event-utils";
 
 @Component({
   selector: 'app-rendez-vous',
@@ -23,13 +13,7 @@ import {debounceTime, distinctUntilChanged, filter, fromEvent, tap} from "rxjs";
 })
 export class RendezVousComponent {
   rendezVous:string="";
-  canchange:boolean=false;
-  addForm: FormGroup = this.formBuilder.group({
-    nom: [''],
-    prenom: [''],
-    email: [''],
-    password: [''],
-  });
+  canChange:boolean=false;
   calendarVisible = true;
   title:string="";
   calendarOptions: CalendarOptions = {
@@ -44,11 +28,10 @@ export class RendezVousComponent {
     headerToolbar: {
       left: 'prev,next',
       center: 'title',
-
     },
     allDaySlot:false,
     slotMinTime: '08:00:00', // The earliest time the schedule will start
-    // slotMaxTime: '20:00:00',  // The latest time the schedule will end
+    slotMaxTime: '18:00:00',  // The latest time the schedule will end
     initialView: 'timeGridWeek',
     initialEvents: INITIAL_EVENTS, // alternatively, use the `events` setting to fetch from a feed
     editable: true,
@@ -63,14 +46,11 @@ export class RendezVousComponent {
     // eventRemove:
   };
   currentEvents: EventApi[] = [];
-  constructor(private changeDetector: ChangeDetectorRef,private formBuilder: FormBuilder) {}
-  handleWeekendsToggle() {
-    const { calendarOptions } = this;
-    calendarOptions.weekends = !calendarOptions.weekends;
-  }
+  constructor(private changeDetector: ChangeDetectorRef) {}
+
   handleDateSelect(selectInfo: DateSelectArg) {
     const calendarApi = selectInfo.view.calendar;
-    if (this.canchange==true) {
+    if (this.canChange) {
         calendarApi.getEventById(String(this.currentEvents.length - 1))?.remove();
     }
       calendarApi.addEvent({
@@ -84,10 +64,9 @@ export class RendezVousComponent {
        else {
          this.rendezVous = selectInfo.startStr;
        }
-      this.canchange=true;
+      this.canChange=true;
     // clear date selection
   }
-
 
   handleEventClick(clickInfo: EventClickArg) {
     if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
@@ -99,11 +78,4 @@ export class RendezVousComponent {
     this.currentEvents = events;
     this.changeDetector.detectChanges();
   }
-  closeEditModal() {
-    const modal = document.getElementById('editUserModal');
-    modal?.classList.add('hidden');
-
-  }
-
-
 }

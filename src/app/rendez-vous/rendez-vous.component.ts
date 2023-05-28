@@ -12,10 +12,10 @@ import {INITIAL_EVENTS} from "./event-utils";
 
 })
 export class RendezVousComponent {
-  rendezVous:string="";
-  canChange:boolean=false;
+  rendezVous: string = "";
+  canChange: boolean = false;
   calendarVisible = true;
-  title:string="";
+  title: string = "";
   calendarOptions: CalendarOptions = {
     plugins: [
       interactionPlugin,
@@ -24,12 +24,12 @@ export class RendezVousComponent {
       listPlugin,
     ],
     aspectRatio: 3
-,
+    ,
     headerToolbar: {
       left: 'prev,next',
       center: 'title',
     },
-    allDaySlot:false,
+    allDaySlot: false,
     slotMinTime: '08:00:00', // The earliest time the schedule will start
     slotMaxTime: '18:00:00',  // The latest time the schedule will end
     initialView: 'timeGridWeek',
@@ -46,28 +46,30 @@ export class RendezVousComponent {
     // eventRemove:
   };
   currentEvents: EventApi[] = [];
-  constructor(private changeDetector: ChangeDetectorRef) {}
 
+  constructor(private changeDetector: ChangeDetectorRef) {
+  }
+  //TODO : add rdv from backend
   handleDateSelect(selectInfo: DateSelectArg) {
     const calendarApi = selectInfo.view.calendar;
     if (this.canChange) {
-        calendarApi.getEventById(String(this.currentEvents.length - 1))?.remove();
+      calendarApi.getEventById(String(this.currentEvents.length - 1))?.remove();
     }
-      calendarApi.addEvent({
-        id: String(this.currentEvents.length),
-        start: selectInfo.startStr,
-         end: selectInfo.endStr,
-      });
-       if (this.rendezVous==selectInfo.startStr){
-         this.rendezVous="";
-       }
-       else {
-         this.rendezVous = selectInfo.startStr;
-       }
-      this.canChange=true;
+    calendarApi.addEvent({
+      id: String(this.currentEvents.length),
+      start: selectInfo.startStr,
+      end: selectInfo.endStr,
+    });
+    if (this.rendezVous == selectInfo.startStr) {
+      this.rendezVous = "";
+    } else {
+      this.rendezVous = selectInfo.startStr;
+    }
+    this.canChange = true;
     // clear date selection
   }
 
+  //TODO : remove rdv from backend
   handleEventClick(clickInfo: EventClickArg) {
     if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
       clickInfo.event.remove();

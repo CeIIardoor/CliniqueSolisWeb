@@ -12,7 +12,7 @@ import {routeNames} from "../../routes";
 })
 export class LoginComponent implements OnInit {
   constructor(
-    private userService: LoginService,
+    private loginService: LoginService,
     private userAuthService: AuthService,
     private router: Router
   ) {}
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   authenticate(loginForm: NgForm) {
-    this.userService.login(loginForm.value.email, loginForm.value.password).subscribe(
+    this.loginService.login(loginForm.value.email, loginForm.value.password).subscribe(
       (response: any) => {
         this.userAuthService.setJwtToken(response.access_token);
         this.userAuthService.setRefreshToken(response.refresh_token);

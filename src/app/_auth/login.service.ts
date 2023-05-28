@@ -29,6 +29,18 @@ export class LoginService {
       {headers: this.requestHeader});
   }
 
+  public register(email: String,
+                  password: String,
+                  nom: String,
+                  prenom: String,
+                  role: String,
+  ) {
+    return this.httpClient.post(
+      this.BACKEND_URL + "register",
+      {email, password, nom, prenom, role},
+      {headers: this.requestHeader});
+  }
+
   public hasAuthorization(allowedRoles: string[]): boolean {
     const userRole = this.userAuthService.getRole();
     if (userRole === null) {
@@ -36,5 +48,4 @@ export class LoginService {
     }
     return allowedRoles.includes(userRole);
   }
-
 }

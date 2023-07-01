@@ -9,7 +9,7 @@ import {routeNames} from "./routes";
 export class AppComponent {
   constructor(
     private router: Router,
-    ) {}
+  ) {}
   public isDashboard() : boolean {
     return this.router.url.includes(routeNames.dashboard);
   }

@@ -28,6 +28,7 @@ export class RendezVousComponent {
     headerToolbar: {
       left: 'prev,next',
       center: 'title',
+
     },
     allDaySlot: false,
     slotMinTime: '08:00:00', // The earliest time the schedule will start
@@ -44,6 +45,7 @@ export class RendezVousComponent {
     // you can update a remote database when these fire:
     // eventAdd:
     // eventRemove:
+
   };
   currentEvents: EventApi[] = [];
 

@@ -25,6 +25,7 @@ import { RegisterPatientComponent } from './register-patient/register-patient.co
 import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { GestionPatientsComponent } from './Patient/gestion-patients.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 
@@ -42,7 +43,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
     NotFoundComponent,
     RendezVousComponent,
     RegisterPatientComponent,
-
+    GestionPatientsComponent
   ],
   imports: [
     BrowserModule,

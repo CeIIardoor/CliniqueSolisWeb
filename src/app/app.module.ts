@@ -38,7 +38,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     UsersDashboardComponent,
     NotFoundComponent,
     RendezVousComponent,
-    RegisterPatientComponent
+    RegisterPatientComponent,
   ],
   imports: [
     BrowserModule,

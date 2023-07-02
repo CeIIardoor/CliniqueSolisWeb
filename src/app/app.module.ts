@@ -26,6 +26,9 @@ import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { GestionPatientsComponent } from './Patient/gestion-patients.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +54,8 @@ import { GestionPatientsComponent } from './Patient/gestion-patients.component';
     NgOptimizedImage,
     ReactiveFormsModule,
     FullCalendarModule,
-    ButtonModule
+    ButtonModule,
+    FontAwesomeModule
   ],
   providers: [
     AuthGuard,

@@ -1,7 +1,7 @@
 import {Patient_sexe} from "../Enums/patient_sexe";
 
-export interface Patient {
-  id: number;
+export interface PatientInterface {
+  patient_id: number;
   nom: string;
   prenom: string;
   cin: string;

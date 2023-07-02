@@ -58,7 +58,12 @@ import { FullCalendarModule } from '@fullcalendar/angular';
       useClass:AuthMiddlewareInterceptor,
       multi:true
     },
-    LoginService
+    LoginService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass:CorsInterceptor,
+      multi:true
+    }
   ],
   bootstrap: [AppComponent]
 })

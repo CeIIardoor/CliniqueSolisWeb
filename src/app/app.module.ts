@@ -28,6 +28,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { GestionPatientsComponent } from './Patient/gestion-patients.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
+import {GestionRendezVousComponent} from "./RendezVous/Component/gestion-rendezVous.component";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { library } from '@fortawesome/fontawesome-svg-core';
     NotFoundComponent,
     RendezVousComponent,
     RegisterPatientComponent,
-    GestionPatientsComponent
+    GestionPatientsComponent,
+    GestionRendezVousComponent,
   ],
   imports: [
     BrowserModule,

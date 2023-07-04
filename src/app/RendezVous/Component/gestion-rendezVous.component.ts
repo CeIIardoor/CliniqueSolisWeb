@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {debounceTime, distinctUntilChanged, filter, fromEvent, tap} from "rxjs";
 import {rendezVousInterface} from "../Models/RendezVousInterface";
 import {RendezVousService} from "../services/rendezVous.service";
+import {UserInterface} from "../../admin/users-dashboard/Interfaces/UserInterface";
 
 @Component({
   selector: 'app-gestion-rendezVous',

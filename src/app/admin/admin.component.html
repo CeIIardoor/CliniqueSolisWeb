@@ -12,10 +12,7 @@
               <span class="text-xl font-bold leading-none text-gray-900 sm:text-2xl dark:text-white">Titre</span>
               <h3 class="text-base font-light text-gray-500 dark:text-gray-400">Sous titre</h3>
             </div>
-            <div
-              class="flex items-center justify-end flex-1 text-base font-medium text-green-500 dark:text-green-400">
-              l3iba khdra
-            </div>
+
           </div>
           <div id="main-chart">
             <span class="dark:text-white">
@@ -34,12 +31,16 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                 </svg>
               </a>
+
             </div>
+
           </div>
+          <div id="mainchart" style="height: 500px;width: 1000px"></div>
+
         </div>
         <!--widget 1.2 -->
         <div
-          class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+          class="p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800">
           <h3 class="flex items-center mb-4 text-lg font-semibold text-gray-900 dark:text-white">Stats Compta
             <button data-popover-target="popover-description" data-popover-placement="bottom-end" type="button">
               <svg class="w-4 h-4 ml-2 text-gray-400 hover:text-gray-500" aria-hidden="true" fill="currentColor"
@@ -140,32 +141,9 @@
                 </svg>
               </a>
             </div>
+
+
           </div>
-        </div>
-      </div>
-      <div class="grid w-full grid-cols-1 gap-4 mt-4 xl:grid-cols-2 2xl:grid-cols-3">
-        <!--widget 2.1 -->
-        <div
-          class="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700 sm:p-6 dark:bg-gray-800">
-          <div class="w-full">
-            <h3 class="text-base font-normal text-gray-500 dark:text-gray-400">Rendez vous :</h3>
-            <span class="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">2,340</span>
-            <p class="flex items-center text-base font-normal text-gray-500 dark:text-gray-400">
-            <span class="flex items-center mr-1.5 text-sm text-green-500 dark:text-green-400">
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
-                   aria-hidden="true">
-                <path clip-rule="evenodd" fill-rule="evenodd"
-                      d="M10 17a.75.75 0 01-.75-.75V5.612L5.29 9.77a.75.75 0 01-1.08-1.04l5.25-5.5a.75.75 0 011.08 0l5.25 5.5a.75.75 0 11-1.08 1.04l-3.96-4.158V16.25A.75.75 0 0110 17z"></path>
-              </svg>
-              3,4%
-            </span>
-              par rapport au mois dernier
-            </p>
-          </div>
-        </div>
-        <!--widget 2.2 -->
-        <div
-          class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800">
           <div class="w-full">
             <h3 class="mb-2 text-base font-normal text-gray-500 dark:text-gray-400">Patients par age :</h3>
             <div class="flex items-center mb-2">
@@ -177,7 +155,7 @@
             <div class="flex items-center mb-2">
               <div class="w-16 text-sm font-medium dark:text-white">[41-60]</div>
               <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                <div class="bg-primary-600 h-2.5 rounded-full dark:bg-primary-500" style="width: 15%"></div>
+                <div class="bg-primary-600 h-2.5 rounded-full dark:bg-primary-500" style="width: 100%"></div>
               </div>
             </div>
             <div class="flex items-center mb-2">
@@ -198,56 +176,89 @@
               Commentaire
             </span>
           </div>
+
         </div>
+
       </div>
+<!--      <div class="grid w-full grid-cols-1 gap-4 mt-4 xl:grid-cols-2 2xl:grid-cols-3">-->
+<!--        &lt;!&ndash;widget 2.1 &ndash;&gt;-->
+<!--        <div-->
+<!--          class="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700 sm:p-6 dark:bg-gray-800">-->
+<!--          <div class="w-full">-->
+<!--            <h3 class="text-base font-normal text-gray-500 dark:text-gray-400">Rendez vous :</h3>-->
+<!--            <span class="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">2,340</span>-->
+<!--            <p class="flex items-center text-base font-normal text-gray-500 dark:text-gray-400">-->
+<!--            <span class="flex items-center mr-1.5 text-sm text-green-500 dark:text-green-400">-->
+<!--              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"-->
+<!--                   aria-hidden="true">-->
+<!--                <path clip-rule="evenodd" fill-rule="evenodd"-->
+<!--                      d="M10 17a.75.75 0 01-.75-.75V5.612L5.29 9.77a.75.75 0 01-1.08-1.04l5.25-5.5a.75.75 0 011.08 0l5.25 5.5a.75.75 0 11-1.08 1.04l-3.96-4.158V16.25A.75.75 0 0110 17z"></path>-->
+<!--              </svg>-->
+<!--              3,4%-->
+<!--            </span>-->
+<!--              par rapport au mois dernier-->
+<!--            </p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash;widget 2.2 &ndash;&gt;-->
+<!--        <div-->
+<!--          class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800">-->
+<!--          <div class="w-full">-->
+<!--            <h3 class="mb-2 text-base font-normal text-gray-500 dark:text-gray-400">Patients par age :</h3>-->
+<!--            <div class="flex items-center mb-2">-->
+<!--              <div class="w-16 text-sm font-medium dark:text-white">60+</div>-->
+<!--              <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">-->
+<!--                <div class="bg-primary-600 h-2.5 rounded-full dark:bg-primary-500" style="width: 50%"></div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="flex items-center mb-2">-->
+<!--              <div class="w-16 text-sm font-medium dark:text-white">[41-60]</div>-->
+<!--              <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">-->
+<!--                <div class="bg-primary-600 h-2.5 rounded-full dark:bg-primary-500" style="width: 100%"></div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="flex items-center mb-2">-->
+<!--              <div class="w-16 text-sm font-medium dark:text-white">[19-40]</div>-->
+<!--              <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">-->
+<!--                <div class="bg-primary-600 h-2.5 rounded-full dark:bg-primary-500" style="width: 60%"></div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="flex items-center mb-2">-->
+<!--              <div class="w-16 text-sm font-medium dark:text-white">[0-18]</div>-->
+<!--              <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">-->
+<!--                <div class="bg-primary-600 h-2.5 rounded-full dark:bg-primary-500" style="width: 30%"></div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="flex items-center justify-start pt-3 mt-5 border-t border-gray-200 sm:pt-6 dark:border-gray-700">-->
+<!--            <span class="dark:text-white">-->
+<!--              Commentaire-->
+<!--            </span>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
       <div class="grid grid-cols-1 my-4 xl:grid-cols-2 xl:gap-4">
         <div
           class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 xl:mb-0">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Support</h3>
-          </div>
-          <!-- Support -->
-            <article class="mb-5">
-              <footer class="flex items-center justify-between mb-2">
-                <div class="flex items-center">
-                  <p class="inline-flex items-center mr-3 text-sm font-semibold text-gray-900 dark:text-white"><img
-                    class="w-6 h-6 mr-2 rounded-full"
-                    src="https://flowbite.com/docs/images/people/profile-picture-2.jpg" alt="Michael Gough">7med tbib</p>
-                  <p class="text-sm text-gray-600 dark:text-gray-400">
-                    <time datetime="2023-02-08" title="8 février 2023"> 08/02/2023 16:15</time>
+          <div class="grid gap-4">
+                       <div class="items-center justify-between pb-4 border-b border-gray-200 sm:flex dark:border-gray-700">
+                <div class="w-full mb-4 sm:mb-0">
+                <span class="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">
+                  Titre du graph
+                </span>
+                  <p class="flex items-center text-base font-normal text-gray-500 dark:text-gray-400">
+                    Juillet 2023
                   </p>
                 </div>
-                <button id="dropdownComment1Button" data-dropdown-toggle="dropdownComment1"
-                        class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:ring-gray-600"
-                        type="button">
-                  <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                       xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z">
-                    </path>
-                  </svg>
-                  <span class="sr-only">Body text</span>
-                </button>
-                <!-- Dropdown menu -->
-                <div id="dropdownComment1"
-                     class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-36 dark:bg-gray-700 dark:divide-gray-600">
-                  <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
-                      aria-labelledby="dropdownMenuIconHorizontalButton">
-                    <li>
-                      <a href="#"
-                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Traiter</a>
-                    </li>
-                    <li>
-                      <a href="#"
-                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Supprimer</a>
-                    </li>
-                  </ul>
-                </div>
-              </footer>
-              <p class="mb-2 text-gray-900 dark:text-white">
-                Bonjour, khassni lbenj f salle d'opérations 8.
-              </p>
-            </article>
+              </div>
+              <div class="w-full dark:text-white">
+                Contenu du graph
+              </div>
+              <div id="mainchart2" style="height: 500px;width: 700px"></div>
+
+          </div>
+
+          <!-- Support -->
         </div>
         <!-- Right Content -->
         <div class="grid gap-4">
@@ -265,10 +276,15 @@
             </div>
             <div class="w-full dark:text-white">
               Contenu du graph
+              <div id="mainchart3" style="height: 500px;width: 700px"></div>
+
             </div>
+
+
           </div>
         </div>
       </div>
     </div>
+
   </main>
 </div>

@@ -18,15 +18,6 @@ export class RegisterPatientComponent implements OnInit {
               private loginService: LoginService
   ){}
   ngOnInit(): void {}
-  loading: boolean = false;
-
-  load() {
-    this.loading = true;
-
-    setTimeout(() => {
-      this.loading = false
-    }, 1000);
-  }
 
   submitForm(registerPatientForm : NgForm) {
     console.log(registerPatientForm.value);
@@ -40,8 +31,12 @@ export class RegisterPatientComponent implements OnInit {
         "nom": registerPatientForm.value.nom,
         "prenom": registerPatientForm.value.prenom,
         "cin": registerPatientForm.value.cin,
-      }
-      ,
+        "dateRdv": registerPatientForm.value.dateRdv,
+        "heureRdv": registerPatientForm.value.heureRdv,
+        "telephone": registerPatientForm.value.telephone,
+        "dateNaissance": registerPatientForm.value.dateNaissance,
+        "sexe": registerPatientForm.value.sexe,
+      },
       {headers: {'No-Auth': 'True'}}
     ).subscribe(
       () => {
@@ -50,7 +45,7 @@ export class RegisterPatientComponent implements OnInit {
             this.userAuthService.setJwtToken(response.access_token);
             this.userAuthService.setRefreshToken(response.refresh_token);
             this.userAuthService.setRole(response.role_name);
-            this.router.navigate(['/rendez-vous']).then(() => console.log("PatientInterface successfully registered"));
+            this.router.navigate(['/mes-rendez-vous']).then(() => console.log("patient successfully registered"));
           }
         );
       }

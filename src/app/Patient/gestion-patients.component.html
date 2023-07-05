@@ -1,7 +1,7 @@
 <div class="p-8">
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <div class="flex items-center justify-between p-4 bg-white dark:bg-gray-800">
-      <button (click)="openAddModal()" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Ajouter un utilisateur</button>
+      <button (click)="openAddModal()" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Ajouter un patient</button>
       <label for="table-search-patients" class="sr-only">Rechercher</label>
       <div class="relative">
         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -14,7 +14,7 @@
         </div>
         <input type="text" id="table-search-patients"
                class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-               placeholder="Rechercher" #searchInput>
+               placeholder="Rechercher par CIN" #searchInput>
       </div>
     </div>
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">

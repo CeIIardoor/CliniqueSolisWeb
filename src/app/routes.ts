@@ -10,6 +10,7 @@ import {NotFoundComponent} from "./layouts/not-found/not-found.component";
 import { RendezVousComponent } from './rendez-vous/rendez-vous.component';
 import {RegisterPatientComponent} from "./register-patient/register-patient.component";
 import { GestionPatientsComponent} from "./Patient/gestion-patients.component";
+import {GestionMedecinComponent} from "./Medecin/gestion-medecin.component";
 
 export const routeNames = {
   index: '',
@@ -36,6 +37,7 @@ export const routes: Routes = [
   {path: routeNames.rendezVous, component: RendezVousComponent},
   {path: routeNames.registerPatient, component:RegisterPatientComponent},
   {path:routeNames.gestionPatients, component: GestionPatientsComponent, canActivate: [AuthGuard], data: {roles: ["ROLE_ADMIN"]}},
+  {path:routeNames.gestionMedecins, component: GestionMedecinComponent, canActivate: [AuthGuard], data: {roles: ["ROLE_ADMIN"]}},
 
   {path: '**', component: NotFoundComponent},
 ];

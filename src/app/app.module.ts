@@ -26,6 +26,7 @@ import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { GestionPatientsComponent } from './Patient/gestion-patients.component';
+import {GestionMedecinComponent} from "./Medecin/gestion-medecin.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,8 @@ import { GestionPatientsComponent } from './Patient/gestion-patients.component';
     NotFoundComponent,
     RendezVousComponent,
     RegisterPatientComponent,
-    GestionPatientsComponent
+    GestionPatientsComponent,
+    GestionMedecinComponent
   ],
   imports: [
     BrowserModule,

@@ -50,7 +50,7 @@ export class RegisterPatientComponent implements OnInit {
             this.userAuthService.setJwtToken(response.access_token);
             this.userAuthService.setRefreshToken(response.refresh_token);
             this.userAuthService.setRole(response.role_name);
-            this.router.navigate(['/rendez-vous']).then(() => console.log("PatientInterface successfully registered"));
+            this.router.navigate(['/rendez-vous']).then(() => console.log("MedecinInterface successfully registered"));
           }
         );
       }

@@ -37,5 +37,6 @@ export const routes: Routes = [
   {path:routeNames.gestionPatients, component: GestionPatientsComponent, canActivate: [AuthGuard], data: {roles: ["ROLE_ADMIN"]}},
   {path:routeNames.gestionRendezVous, component: GestionRendezVousComponent, canActivate: [AuthGuard], data: {roles: ["ROLE_ADMIN"]}},
 
+
   {path: '**', component: NotFoundComponent},
 ];

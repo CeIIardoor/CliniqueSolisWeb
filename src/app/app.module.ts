@@ -21,7 +21,13 @@ import { UsersDashboardComponent } from './admin/users-dashboard/users-dashboard
 import { NotFoundComponent } from './layouts/not-found/not-found.component';
 import {CorsInterceptor} from "./_auth/cors-middleware.interceptor";
 import { RegisterPatientComponent } from './register-patient/register-patient.component';
-import { GestionPatientsComponent } from './patient/gestion-patients.component';
+import { ButtonModule } from 'primeng/button';
+import { CalendarModule } from 'primeng/calendar';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import {GestionRendezVousComponent} from "./RendezVous/Component/gestion-rendezVous.component";
+import {GestionPatientsComponent} from "./patient/gestion-patients.component";
 
 @NgModule({
   declarations: [
@@ -36,7 +42,8 @@ import { GestionPatientsComponent } from './patient/gestion-patients.component';
     UsersDashboardComponent,
     NotFoundComponent,
     RegisterPatientComponent,
-    GestionPatientsComponent
+    GestionPatientsComponent,
+    GestionRendezVousComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +53,9 @@ import { GestionPatientsComponent } from './patient/gestion-patients.component';
     RouterModule,
     NgOptimizedImage,
     ReactiveFormsModule,
+    FullCalendarModule,
+    ButtonModule,
+    FontAwesomeModule
   ],
   providers: [
     AuthGuard,
@@ -54,12 +64,7 @@ import { GestionPatientsComponent } from './patient/gestion-patients.component';
       useClass:AuthMiddlewareInterceptor,
       multi:true
     },
-    LoginService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass:CorsInterceptor,
-      multi:true
-    }
+    LoginService
   ],
   bootstrap: [AppComponent]
 })

@@ -4,6 +4,6 @@ export const environment = {
 
   title: 'Clinique Solis PFA',
 
-  apiURL: 'https://cliniquesolisjar.gentlefield-40fba589.westeurope.azurecontainerapps.io'
+  apiURL: 'https://backend.gentlefield-40fba589.westeurope.azurecontainerapps.io'
 
 };

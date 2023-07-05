@@ -64,7 +64,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
       useClass:AuthMiddlewareInterceptor,
       multi:true
     },
-    LoginService
+    LoginService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass:CorsInterceptor,
+      multi:true
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -50,7 +50,7 @@ export class PatientService {
     cin: any;
     telephone: any;
     sexe: any;
-    age: any;
+    date_naissance: any;
 
   }) {
     let PatientRequest = {
@@ -61,7 +61,7 @@ export class PatientService {
       cin: patientData.cin,
       telephone: patientData.telephone,
       sexe: patientData.sexe,
-      age: patientData.age
+      date_naissance: patientData.date_naissance
     }
     return this.http.post(`${environment.apiURL}/api/patient/create`, PatientRequest);
   }

@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {NgForm} from "@angular/forms";
 import {AuthService} from "../_auth/auth.service";
 import {LoginService} from "../_auth/login.service";
+import {Patient_sexe} from "../patient/Enums/patient_sexe";
 
 @Component({
   selector: 'app-register-patient',
@@ -18,15 +19,6 @@ export class RegisterPatientComponent implements OnInit {
               private loginService: LoginService
   ){}
   ngOnInit(): void {}
-  loading: boolean = false;
-
-  load() {
-    this.loading = true;
-
-    setTimeout(() => {
-      this.loading = false
-    }, 1000);
-  }
 
   submitForm(registerPatientForm : NgForm) {
     console.log(registerPatientForm.value);
@@ -40,8 +32,12 @@ export class RegisterPatientComponent implements OnInit {
         "nom": registerPatientForm.value.nom,
         "prenom": registerPatientForm.value.prenom,
         "cin": registerPatientForm.value.cin,
-      }
-      ,
+        "dateRdv": registerPatientForm.value.dateRdv,
+        "heureRdv": registerPatientForm.value.heureRdv,
+        "telephone": registerPatientForm.value.telephone,
+        "date_naissance": registerPatientForm.value.date_naissance,
+        "sexe": registerPatientForm.value.sexe,
+      },
       {headers: {'No-Auth': 'True'}}
     ).subscribe(
       () => {
@@ -50,10 +46,12 @@ export class RegisterPatientComponent implements OnInit {
             this.userAuthService.setJwtToken(response.access_token);
             this.userAuthService.setRefreshToken(response.refresh_token);
             this.userAuthService.setRole(response.role_name);
-            this.router.navigate(['/rendez-vous']).then(() => console.log("PatientInterface successfully registered"));
+            this.router.navigate(['/mes-rendezVous']).then(() => console.log("patient successfully registered"));
           }
         );
       }
     );
   }
+
+  protected readonly Patient_sexe = Patient_sexe;
 }

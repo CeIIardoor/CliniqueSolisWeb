@@ -19,14 +19,9 @@ import {NgOptimizedImage} from "@angular/common";
 import { FooterComponent } from './layouts/footer/footer.component';
 import { UsersDashboardComponent } from './admin/users-dashboard/users-dashboard.component';
 import { NotFoundComponent } from './layouts/not-found/not-found.component';
-import { RendezVousComponent } from './rendez-vous/rendez-vous.component';
-import {CorsInterceptor} from "./_auth/cors-middleware.interceptor";
 import { RegisterPatientComponent } from './register-patient/register-patient.component';
-import { ButtonModule } from 'primeng/button';
-import { CalendarModule } from 'primeng/calendar';
-import { FullCalendarModule } from '@fullcalendar/angular';
-import { GestionPatientsComponent } from './Patient/gestion-patients.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {GestionRendezVousComponent} from "./RendezVous/Component/gestion-rendezVous.component";
+import {GestionPatientsComponent} from "./patient/gestion-patients.component";
 
 @NgModule({
   declarations: [
@@ -40,9 +35,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FooterComponent,
     UsersDashboardComponent,
     NotFoundComponent,
-    RendezVousComponent,
     RegisterPatientComponent,
-    GestionPatientsComponent
+    GestionPatientsComponent,
+    GestionRendezVousComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,10 +47,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     RouterModule,
     NgOptimizedImage,
     ReactiveFormsModule,
-    FullCalendarModule,
-    ButtonModule,
-    FontAwesomeModule,
-
   ],
   providers: [
     AuthGuard,
@@ -64,12 +55,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
       useClass:AuthMiddlewareInterceptor,
       multi:true
     },
-    LoginService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass:CorsInterceptor,
-      multi:true
-    }
+    LoginService
   ],
   bootstrap: [AppComponent]
 })

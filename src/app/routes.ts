@@ -7,9 +7,9 @@ import {ForbiddenComponent} from "./layouts/forbidden/forbidden.component";
 import {UsersDashboardComponent} from "./admin/users-dashboard/users-dashboard.component";
 import {AdminComponent} from "./admin/admin.component";
 import {NotFoundComponent} from "./layouts/not-found/not-found.component";
-import { RendezVousComponent } from './rendez-vous/rendez-vous.component';
 import {RegisterPatientComponent} from "./register-patient/register-patient.component";
-import { GestionPatientsComponent} from "./Patient/gestion-patients.component";
+import {GestionPatientsComponent} from "./patient/gestion-patients.component";
+import {GestionRendezVousComponent} from "./RendezVous/Component/gestion-rendezVous.component";
 
 export const routeNames = {
   index: '',
@@ -19,11 +19,11 @@ export const routeNames = {
   forbidden: 'forbidden',
   notFound: 'notfound',
   usersDashboard: 'dashboard/users',
-  rendezVous: 'rendez-vous',
+  mesRendezVous: 'mes-rendezVous',
   registerPatient:"register-patient",
   gestionMedecins: 'dashboard/gestion-medecins',
   gestionPatients: 'dashboard/gestion-patients',
-  gestionRendezVous: 'dashboard/gestion-rendez-vous',
+  gestionRendezVous: 'dashboard/gestion-rendezVous',
 }
 
 export const routes: Routes = [
@@ -33,9 +33,10 @@ export const routes: Routes = [
   {path: routeNames.dashboard, component: AdminComponent, canActivate: [AuthGuard], data: {roles: ["ROLE_ADMIN"]}},
   {path: routeNames.usersDashboard, component: UsersDashboardComponent, canActivate: [AuthGuard], data: {roles: ["ROLE_ADMIN"]}},
   {path: routeNames.forbidden, component: ForbiddenComponent},
-  {path: routeNames.rendezVous, component: RendezVousComponent},
   {path: routeNames.registerPatient, component:RegisterPatientComponent},
   {path:routeNames.gestionPatients, component: GestionPatientsComponent, canActivate: [AuthGuard], data: {roles: ["ROLE_ADMIN"]}},
+  {path:routeNames.gestionRendezVous, component: GestionRendezVousComponent, canActivate: [AuthGuard], data: {roles: ["ROLE_ADMIN"]}},
+
 
   {path: '**', component: NotFoundComponent},
 ];

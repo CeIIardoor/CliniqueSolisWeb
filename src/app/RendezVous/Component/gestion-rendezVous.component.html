@@ -1,7 +1,8 @@
 <div class="p-8">
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <div class="flex items-center justify-between p-4 bg-white dark:bg-gray-800">
-      <label for="table-search-patients" class="sr-only">Rechercher</label>
+      <button (click)="openAddModal()" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Ajouter un RendezVous</button>
+      <label for="table-search-rendezVous" class="sr-only">Rechercher</label>
       <div class="relative">
         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
           <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true" fill="currentColor"
@@ -11,7 +12,7 @@
                   clip-rule="evenodd"></path>
           </svg>
         </div>
-        <input type="text" id="table-search-patients"
+        <input type="text" id="table-search-rendezVous"
                class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                placeholder="Rechercher" #searchInput>
       </div>
@@ -20,22 +21,22 @@
       <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
       <tr>
         <th scope="col" class="px-6 py-3">
-          Nom complet
+          RendezVousId
         </th>
         <th scope="col" class="px-6 py-3">
-          Email
+          PatientId
         </th>
         <th scope="col" class="px-6 py-3">
-          CIN
+          MedecinId
         </th>
         <th scope="col" class="px-6 py-3">
-          Age
+          Date
         </th>
         <th scope="col" class="px-6 py-3">
-          Telephone
+          Heure
         </th>
         <th scope="col" class="px-6 py-3">
-          Sexe
+          Duree
         </th>
         <th scope="col" class="py-3 flex justify-center">
           Actions
@@ -44,8 +45,8 @@
       </thead>
       <tbody>
       <tr
-        *ngFor="let patient of patients"
-        id="patient-{{patient.patient_id}}"
+        *ngFor="let rendezVous of rendezVous"
+        id="rendezVous-{{rendezVous.rendezVous_id}}"
         class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
         <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -55,35 +56,35 @@
           </svg>
 
           <div class="pl-3">
-            <div class="text-base font-semibold">{{patient.nom}} {{patient.prenom}}</div>
+            <div class="text-base font-semibold">{{rendezVous.rendezVous_id}} </div>
           </div>
         </th>
         <td class="px-6 py-4">
-          {{patient.email}}
+          {{rendezVous.patient_id}}
         </td>
         <td class="px-6 py-4">
-          {{patient.cin}}
+          {{rendezVous.medecin_id}}
         </td>
         <td class="px-6 py-4">
-          {{patient.age}}
+          {{rendezVous.date}}
         </td>
         <td class="px-6 py-4">
-          {{patient.telephone}}
+          {{rendezVous.heure}}
         </td>
         <td class="px-6 py-4">
-          {{patient.sexe}}
+          {{rendezVous.duree}}
         </td>
         <td class="px-6 pl-4">
           <div class="flex flex-row gap-2 justify-center">
             <!-- Modal toggle -->
-            <button (click)="openViewModal(patient.patient_id)"
+            <button (click)="openViewModal(rendezVous.rendezVous_id)"
                     class="font-medium text-green-600 dark:text-green-500 hover:underline">
               View
             </button>
-            <button (click)="openEditModal(patient)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+            <button (click)="openEditModal(rendezVous)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
               Edit
             </button>
-            <button (click)="deletePatient(patient.patient_id)" class="font-medium text-red-600 dark:text-red-500 hover:underline">
+            <button (click)="deleteRendezVous(rendezVous.rendezVous_id)" class="font-medium text-red-600 dark:text-red-500 hover:underline">
               Delete
             </button>
           </div>
@@ -91,8 +92,8 @@
       </tr>
       </tbody>
     </table>
-    <!-- View patient modal -->
-    <div id="viewPatientModal"
+    <!-- View RendezVous modal -->
+    <div id="viewRendezVousModal"
          class="hidden fixed translate-x-1/4 translate-y-1/4 z-50 items-center justify-center w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
       <div class="relative w-full max-w-2xl max-h-full">
         <!-- Modal content -->
@@ -100,7 +101,7 @@
           <!-- Modal header -->
           <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
             <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-              Détails de l'utilisateur
+              Détails de RendezVous
             </h3>
             <button (click)="closeViewModal()" type="button"
                     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
@@ -116,54 +117,48 @@
           <div class="p-6 space-y-6">
             <div class="grid grid-cols-6 gap-6">
               <div class="col-span-6 sm:col-span-3">
-                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Prénom</label>
-                <input type="text" name="prenom"
+                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">RendezVousId</label>
+                <input type="text" name="rendezVousId"
                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                       [value]="viewTarget?.prenom" readonly>
+                       [value]="viewTarget?.rendezVous_id" readonly>
               </div>
               <div class="col-span-6 sm:col-span-3">
-                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nom</label>
-                <input type="text" name="nom"
+                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">PatientId</label>
+                <input type="text" name="patientId"
                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                       [value]="viewTarget?.nom" readonly>
+                       [value]="viewTarget?.patient_id" readonly>
               </div>
               <div class="col-span-6 sm:col-span-3">
-                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                <input type="email" name="email"
+                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">MedecinId</label>
+                <input type="email" name="medecinId"
                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                       [value]="viewTarget?.email" readonly>
+                       [value]="viewTarget?.medecin_id" readonly>
               </div>
               <div class="col-span-6 sm:col-span-3">
-                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Téléphone</label>
-                <input type="text" name="telephone"
+                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date</label>
+                <input type="text" name="date"
                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                       [value]="viewTarget?.telephone" readonly>
+                       [value]="viewTarget?.date" readonly>
               </div>
               <div class="col-span-6 sm:col-span-3">
-                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">CIN</label>
-                <input type="text" name="cin"
+                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Heure</label>
+                <input type="text" name="heure"
                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                       [value]="viewTarget?.cin" readonly>
+                       [value]="viewTarget?.heure" readonly>
               </div>
               <div class="col-span-6 sm:col-span-3">
-                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Age</label>
-                <input type="text" name="age"
+                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">duree</label>
+                <input type="text" name="duree"
                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                       [value]="viewTarget?.age" readonly>
-              </div>
-              <div class="col-span-6 sm:col-span-3">
-                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sexe</label>
-                <input type="text" name="sexe"
-                       class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                       [value]="viewTarget?.sexe" readonly>
+                       [value]="viewTarget?.duree" readonly>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- Edit patient modal -->
-    <div id="editPatientModal"
+    <!-- Edit RendezVous modal -->
+    <div id="editRendezVousModal"
          class="hidden fixed translate-x-1/4 translate-y-1/4 z-50 items-center justify-center overflow-x-hidden overflow-y-auto top-4 md:inset-0 h-modal sm:h-full">
       <div class="relative w-full h-full max-w-2xl px-4 md:h-auto">
         <!-- Modal content -->
@@ -171,7 +166,7 @@
           <!-- Modal header -->
           <div class="flex items-start justify-between p-5 border-b rounded-t dark:border-gray-700">
             <h3 class="text-xl font-semibold dark:text-white">
-              Modifier Infos Utilisateur
+              Modifier Infos RendezVous
             </h3>
             <button type="button" (click)="closeEditModal()"
                     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-700 dark:hover:text-white">
@@ -185,51 +180,45 @@
           </div>
           <!-- Modal body -->
           <div class="p-6 space-y-6">
-            <form [formGroup]="editForm" (ngSubmit)="onEditFormSubmit(editTarget?.patient_id)">
+            <form [formGroup]="editForm" (ngSubmit)="onEditFormSubmit(editTarget?.rendezVous_id)">
               <div class="grid grid-cols-6 gap-6">
                 <div class="col-span-6 sm:col-span-3">
-                  <label for="prenom"
-                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Prénom</label>
-                  <input type="text" name="prenom" value="Bonnie" id="prenom" formControlName="prenom"
+                  <label for="rendezVousId"
+                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">RendezVousId</label>
+                  <input type="text" name="rendezVousId" value="Bonnie" id="rendezVousId" formControlName="rendezVousId"
                          class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                         [value]="editTarget?.prenom" required>
+                         [value]="editTarget?.rendezVous_id" required>
                 </div>
                 <div class="col-span-6 sm:col-span-3">
-                  <label for="nom"
-                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nom</label>
-                  <input type="text" name="nom" value="Green" id="nom" formControlName="nom"
+                  <label for="patientId"
+                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">PatientId</label>
+                  <input type="text" name="PatientId" value="Green" id="PatientId" formControlName="PatientId"
                          class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                         [value]="editTarget?.nom" required>
+                         [value]="editTarget?.patient_id" required>
                 </div>
                 <div class="col-span-6 sm:col-span-3">
-                  <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                  <input type="email" name="email" id="email" formControlName="email"
+                  <label for="MedecinId" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">MedecinId</label>
+                  <input type="text" name="MedecinId" id="MedecinId" formControlName="MedecinId"
                          class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                         [value]="editTarget?.email" required>
+                         [value]="editTarget?.medecin_id" required>
                 </div>
                 <div class="col-span-6 sm:col-span-3">
-                  <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Téléphone</label>
-                  <input type="text" name="telephone" formControlName="telephone"
+                  <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date</label>
+                  <input type="date" name="date" formControlName="date"
                          class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                         [value]="editTarget?.telephone" required>
+                         [value]="editTarget?.date" required>
                 </div>
                 <div class="col-span-6 sm:col-span-3">
-                  <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">CIN</label>
-                  <input type="text" name="cin" formControlName="cin"
+                  <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Heure</label>
+                  <input type="text" name="heure" formControlName="heure"
                          class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                         [value]="editTarget?.cin" required>
+                         [value]="editTarget?.heure" required>
                 </div>
                 <div class="col-span-6 sm:col-span-3">
-                  <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Age</label>
-                  <input type="text" name="age" formControlName="age"
+                  <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Duree</label>
+                  <input type="text" name="duree" formControlName="duree"
                          class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                         [value]="editTarget?.age" required>
-                </div>
-                <div class="col-span-6 sm:col-span-3">
-                  <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sexe</label>
-                  <input type="text" name="sexe" formControlName="sexe"
-                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                         [value]="editTarget?.sexe" required>
+                         [value]="editTarget?.duree" required>
                 </div>
               </div>
               <!-- Modal footer -->

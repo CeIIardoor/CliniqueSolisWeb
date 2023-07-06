@@ -4,7 +4,6 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {debounceTime, distinctUntilChanged, filter, fromEvent, tap} from "rxjs";
 import {PatientInterface} from "./Models/PatientInterface";
 import {PatientService} from "./_services/Patient.service";
-import {co} from "@fullcalendar/core/internal-common";
 
 @Component({
   selector: 'app-gestion-patients',
@@ -26,7 +25,7 @@ export class GestionPatientsComponent implements OnInit, OnDestroy {
     email: [this.editTarget?.email],
     sexe: [this.editTarget?.sexe],
     telephone: [this.editTarget?.telephone],
-    age: [this.editTarget?.age],
+    date_naissance: [this.editTarget?.date_naissance],
 
   });
 
@@ -38,14 +37,14 @@ export class GestionPatientsComponent implements OnInit, OnDestroy {
       email: [''],
       sexe: [''],
       telephone: [''],
-      age: [''],
+      date_naissance: [''],
     }
   );
 
   // CONSTRUCTOR
   constructor(
     private httpClient: HttpClient,
-    private GestionPatients: PatientService,
+    private patientService: PatientService,
     private formBuilder: FormBuilder,
   ) {
   }
@@ -53,9 +52,10 @@ export class GestionPatientsComponent implements OnInit, OnDestroy {
 
   // LIFECYCLE HOOKS
   ngOnInit(): void {
-    this.GestionPatients.getAllPatients().subscribe(
+    this.patientService.getAllPatients().subscribe(
       (data) => {
         this.patients = data.patients;
+        console.log(this.patients);
       }
     )
   }
@@ -71,7 +71,7 @@ export class GestionPatientsComponent implements OnInit, OnDestroy {
       )
       .subscribe(
         () => {
-          this.GestionPatients.searchPatient(this.searchInputValue?.nativeElement.value).subscribe(
+          this.patientService.searchPatient(this.searchInputValue?.nativeElement.value).subscribe(
             (data) => {
               this.patients = data.patients;
             }
@@ -100,7 +100,7 @@ export class GestionPatientsComponent implements OnInit, OnDestroy {
     const modal = document.getElementById('viewPatientModal');
     modal?.classList.remove('hidden');
     this.toggleBackgroundBlur(true);
-    this.viewTarget = this.patients.find(patient => patient.patient_id == patient_id) as PatientInterface;
+    this.viewTarget = this.patients.find( patient => patient.patient_id == patient_id) as PatientInterface;
     console.log(this.viewTarget);
 
   }
@@ -127,18 +127,15 @@ export class GestionPatientsComponent implements OnInit, OnDestroy {
   }
 
   deletePatient(patient_id: number) {
-    let patient = this.patients.find(patient => patient.patient_id == patient_id) as PatientInterface;
-
-      this.GestionPatients.deletePatientById(patient_id).subscribe(
-        (data) => {
-          console.log(data);
-          this.GestionPatients.getAllPatients().subscribe(
-            (data) => {
-              this.patients = data.patients;
-            }
-          );
-        }
-      );
+    this.patientService.deletePatientById(patient_id).subscribe(
+      () => {
+        this.patientService.getAllPatients().subscribe(
+          (data) => {
+            this.patients = data.patients;
+          }
+        );
+      }
+    );
   }
 
   onEditFormSubmit(patientId: number | undefined) {
@@ -153,12 +150,12 @@ export class GestionPatientsComponent implements OnInit, OnDestroy {
       email: this.editForm.value.email,
       sexe: this.editForm.value.sexe,
       telephone: this.editForm.value.telephone,
-      age: this.editForm.value.age,
+      date_naissance: this.editForm.value.date_naissance,
     }
 
-    this.GestionPatients.updatePatient(patientId, patientData).subscribe(
+    this.patientService.updatePatient(patientId, patientData).subscribe(
       () => {
-        this.GestionPatients.getAllPatients().subscribe(
+        this.patientService.getAllPatients().subscribe(
           (data) => {
             this.patients = data.patients;
           }
@@ -177,13 +174,13 @@ export class GestionPatientsComponent implements OnInit, OnDestroy {
       email: this.addForm.value.email,
       sexe: this.addForm.value.sexe,
       telephone: this.addForm.value.telephone,
-      age: this.addForm.value.age,
+      date_naissance: this.addForm.value.date_naissance,
 
     }
-    this.GestionPatients.addPatient(patientData).subscribe(
+    this.patientService.addPatient(patientData).subscribe(
       (data) => {
         console.log(data);
-        this.GestionPatients.getAllPatients().subscribe(
+        this.patientService.getAllPatients().subscribe(
           (data) => {
             this.patients = data.patients;
           }

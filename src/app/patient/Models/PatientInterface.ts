@@ -10,4 +10,11 @@ export interface PatientInterface {
   sexe: Patient_sexe;
   telephone: string;
   age: number;
+  antecedents : {
+    allergies: string;
+    antecedentsFamiliaux: string;
+    chirurgies: string;
+    groupeSanguin: string;
+    maladiesChroniques: string;
+  }
 }

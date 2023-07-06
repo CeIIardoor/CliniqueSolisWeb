@@ -8,7 +8,7 @@ import {UsersDashboardComponent} from "./admin/users-dashboard/users-dashboard.c
 import {AdminComponent} from "./admin/admin.component";
 import {NotFoundComponent} from "./layouts/not-found/not-found.component";
 import {RegisterPatientComponent} from "./register-patient/register-patient.component";
-import { GestionPatientsComponent} from "./patient/gestion-patients.component";
+import {GestionPatientsComponent} from "./patient/gestion-patients.component";
 import {GestionRendezVousComponent} from "./RendezVous/Component/gestion-rendezVous.component";
 
 export const routeNames = {
@@ -19,7 +19,7 @@ export const routeNames = {
   forbidden: 'forbidden',
   notFound: 'notfound',
   usersDashboard: 'dashboard/users',
-  mesRendezVous: 'mes-rendez-vous',
+  mesRendezVous: 'mes-rendezVous',
   registerPatient:"register-patient",
   gestionMedecins: 'dashboard/gestion-medecins',
   gestionPatients: 'dashboard/gestion-patients',

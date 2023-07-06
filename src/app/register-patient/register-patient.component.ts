@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {NgForm} from "@angular/forms";
 import {AuthService} from "../_auth/auth.service";
 import {LoginService} from "../_auth/login.service";
+import {Patient_sexe} from "../patient/Enums/patient_sexe";
 
 @Component({
   selector: 'app-register-patient',
@@ -34,7 +35,7 @@ export class RegisterPatientComponent implements OnInit {
         "dateRdv": registerPatientForm.value.dateRdv,
         "heureRdv": registerPatientForm.value.heureRdv,
         "telephone": registerPatientForm.value.telephone,
-        "dateNaissance": registerPatientForm.value.dateNaissance,
+        "date_naissance": registerPatientForm.value.date_naissance,
         "sexe": registerPatientForm.value.sexe,
       },
       {headers: {'No-Auth': 'True'}}
@@ -45,10 +46,12 @@ export class RegisterPatientComponent implements OnInit {
             this.userAuthService.setJwtToken(response.access_token);
             this.userAuthService.setRefreshToken(response.refresh_token);
             this.userAuthService.setRole(response.role_name);
-            this.router.navigate(['/mes-rendez-vous']).then(() => console.log("patient successfully registered"));
+            this.router.navigate(['/mes-rendezVous']).then(() => console.log("patient successfully registered"));
           }
         );
       }
     );
   }
+
+  protected readonly Patient_sexe = Patient_sexe;
 }

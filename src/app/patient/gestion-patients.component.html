@@ -29,7 +29,7 @@
           CIN
         </th>
         <th scope="col" class="px-6 py-3">
-          Age
+          Date de Naissance
         </th>
         <th scope="col" class="px-6 py-3">
           Telephone
@@ -65,7 +65,7 @@
           {{patient.cin}}
         </td>
         <td class="px-6 py-4">
-          {{patient.age}}
+          {{patient.date_naissance}}
         </td>
         <td class="px-6 py-4">
           {{patient.telephone}}
@@ -146,16 +146,10 @@
                        [value]="viewTarget?.cin" readonly>
               </div>
               <div class="col-span-6 sm:col-span-3">
-                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Age</label>
-                <input type="text" name="age"
+                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Allergies</label>
+                <input type="text" name="allergies"
                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                       [value]="viewTarget?.age" readonly>
-              </div>
-              <div class="col-span-6 sm:col-span-3">
-                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sexe</label>
-                <input type="text" name="sexe"
-                       class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                       [value]="viewTarget?.sexe" readonly>
+                       [value]="viewTarget?.antecedents?.allergies" readonly>
               </div>
             </div>
           </div>
@@ -220,16 +214,10 @@
                          [value]="editTarget?.cin" required>
                 </div>
                 <div class="col-span-6 sm:col-span-3">
-                  <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Age</label>
-                  <input type="text" name="age" formControlName="age"
+                  <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date de Naissance</label>
+                  <input type="text" name="date_naissance" formControlName="date_naissance"
                          class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                         [value]="editTarget?.age" required>
-                </div>
-                <div class="col-span-6 sm:col-span-3">
-                  <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sexe</label>
-                  <input type="text" name="sexe" formControlName="sexe"
-                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                         [value]="editTarget?.sexe" required>
+                         [value]="editTarget?.date_naissance" required>
                 </div>
               </div>
               <!-- Modal footer -->

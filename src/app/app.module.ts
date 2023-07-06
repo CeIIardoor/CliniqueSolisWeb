@@ -19,13 +19,7 @@ import {NgOptimizedImage} from "@angular/common";
 import { FooterComponent } from './layouts/footer/footer.component';
 import { UsersDashboardComponent } from './admin/users-dashboard/users-dashboard.component';
 import { NotFoundComponent } from './layouts/not-found/not-found.component';
-import {CorsInterceptor} from "./_auth/cors-middleware.interceptor";
 import { RegisterPatientComponent } from './register-patient/register-patient.component';
-import { ButtonModule } from 'primeng/button';
-import { CalendarModule } from 'primeng/calendar';
-import { FullCalendarModule } from '@fullcalendar/angular';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
 import {GestionRendezVousComponent} from "./RendezVous/Component/gestion-rendezVous.component";
 import {GestionPatientsComponent} from "./patient/gestion-patients.component";
 
@@ -53,9 +47,6 @@ import {GestionPatientsComponent} from "./patient/gestion-patients.component";
     RouterModule,
     NgOptimizedImage,
     ReactiveFormsModule,
-    FullCalendarModule,
-    ButtonModule,
-    FontAwesomeModule
   ],
   providers: [
     AuthGuard,

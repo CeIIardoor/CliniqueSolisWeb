@@ -183,22 +183,22 @@
             <form [formGroup]="editForm" (ngSubmit)="onEditFormSubmit(editTarget?.rendezVous_id)">
               <div class="grid grid-cols-6 gap-6">
                 <div class="col-span-6 sm:col-span-3">
-                  <label for="rendezVousId"
+                  <label for="rendezVous_id"
                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">RendezVousId</label>
-                  <input type="text" name="rendezVousId" value="Bonnie" id="rendezVousId" formControlName="rendezVousId"
+                  <input type="text" name="rendezVous_id" value="Bonnie" id="rendezVous_id" formControlName="rendezVous_id"
                          class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                          [value]="editTarget?.rendezVous_id" required>
                 </div>
                 <div class="col-span-6 sm:col-span-3">
-                  <label for="patientId"
+                  <label for="patient_id"
                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">PatientId</label>
-                  <input type="text" name="PatientId" value="Green" id="PatientId" formControlName="PatientId"
+                  <input type="text" name="patient_id" value="Green" id="patient_id" formControlName="patient_id"
                          class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                          [value]="editTarget?.patient_id" required>
                 </div>
                 <div class="col-span-6 sm:col-span-3">
-                  <label for="MedecinId" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">MedecinId</label>
-                  <input type="text" name="MedecinId" id="MedecinId" formControlName="MedecinId"
+                  <label for="medecin_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">MedecinId</label>
+                  <input type="text" name="medecin_id" id="medecin_id" formControlName="medecin_id"
                          class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                          [value]="editTarget?.medecin_id" required>
                 </div>

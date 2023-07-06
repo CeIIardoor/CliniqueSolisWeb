@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
   // import { EChartsOption } from 'echarts';
    import * as echarts from 'echarts';
+import {HttpClient} from "@angular/common/http";
+import {Observable, Subscription} from "rxjs";
+import {environment} from "../../environments/environment";
 
 
 
@@ -11,6 +14,24 @@ import {Component, OnInit} from '@angular/core';
 
 })
 export class AdminComponent implements OnInit {
+  constructor(private http: HttpClient) {}
+  mesCles: string[] = [];
+  mesValeurs: string[] = [];
+  number: number = 5;
+  getAllPatients(): Subscription {
+    return this.http.get(`${environment.apiURL}/api/stats/rendezvous-par-date`).subscribe((data: any) => {
+      console.log(data);
+
+      this.mesCles = Object.keys(data);
+      this.mesValeurs = Object.values(data);
+
+      console.log(this.mesCles);
+      console.log(this.mesValeurs);
+      console.log(this.mesValeurs[1]);
+
+    });
+  }
+
   ngOnInit() {
 
       type EChartsOption = echarts.EChartsOption;
@@ -29,7 +50,7 @@ export class AdminComponent implements OnInit {
       },
       series: [
         {
-          data: [120, 200, 150, 80, 70, 110, 130],
+          data: [this.mesValeurs[1], this.number, this.number, this.number, this.number, this.number, this.number],
           type: 'bar',
           showBackground: true,
           backgroundStyle: {
@@ -55,7 +76,7 @@ export class AdminComponent implements OnInit {
       },
       series: [
         {
-          data: [820, 932, 901, 934, 1290, 1330, 1320],
+          data:[1, 1, 1, 1, 1, 1, 1] ,
           type: 'line',
           areaStyle: {}
         }
@@ -86,6 +107,7 @@ export class AdminComponent implements OnInit {
     option3 && myChart3.setOption(option3);
 
 
+    this.getAllPatients();
   }
 
 

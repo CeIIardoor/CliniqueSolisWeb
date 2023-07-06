@@ -61,12 +61,27 @@ export class AdminComponent implements OnInit {
       console.log(this.MedecinSpecialiteValeurs[1]);
 
     });
+
+  }
+  getPatientParAgeParPourcentage(): Subscription {
+    return this.http.get(`${environment.apiURL}/api/stats/patients-par-age-poucentage`).subscribe((data: any) => {
+      console.log(data);
+
+      // this.MedecinSpecialiteCles = Object.keys(data);
+      // this.MedecinSpecialiteValeurs = Object.values(data);
+      //
+      // console.log(this.MedecinSpecialiteCles);
+      // console.log(this.MedecinSpecialiteValeurs);
+      // console.log(this.MedecinSpecialiteValeurs[1]);
+
+    });
   }
 
   ngOnInit() {
     this.getRendezVous();
     this.getMedcinParSpecialite();
     this.getPatientParAge();
+    this.getPatientParAgeParPourcentage();
 
 
       type EChartsOption = echarts.EChartsOption;

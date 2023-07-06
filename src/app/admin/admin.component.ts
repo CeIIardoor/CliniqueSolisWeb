@@ -1,10 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
   // import { EChartsOption } from 'echarts';
    import * as echarts from 'echarts';
 import {HttpClient} from "@angular/common/http";
 import {Observable, Subscription} from "rxjs";
 import {environment} from "../../environments/environment";
-
 
 
 @Component({
@@ -13,26 +12,108 @@ import {environment} from "../../environments/environment";
 
 
 })
-export class AdminComponent implements OnInit {
+export class AdminComponent implements AfterViewInit {
   constructor(private http: HttpClient) {}
   RendezVousCles: string[] = [];
   RendezVousValeurs: number[] = [];
+  test: any[] = []
   PatientAgeCles: string[] = [];
   PatientAgeValeurs: number[] = [];
   MedecinSpecialiteCles: string[] = [];
   MedecinSpecialiteValeurs: number[] = [];
+  PourcentagePatient: number[] = [];
   number: number = 5;
-  array: any[] = [1,2,4,6,7,8,9,10];
+  array: any[] = [];
+  a:number =this.RendezVousValeurs[1];
+  renderChart() {
+    type EChartsOption = echarts.EChartsOption;
+
+    var chartDom = document.getElementById('mainchart')!;
+    var myChart = echarts.init(chartDom);
+    var option: EChartsOption;
+
+    option = {
+      xAxis: {
+        type: 'category',
+        data: this.RendezVousCles
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: [
+        {
+          data: this.RendezVousValeurs,
+          type: 'bar',
+          showBackground: true,
+          backgroundStyle: {
+            color: 'rgba(180, 180, 180, 0.2)'
+          }
+        }
+      ]
+    };
+
+    option && myChart.setOption(option);
+    var chartDom2 = document.getElementById('mainchart2')!;
+    var myChart2 = echarts.init(chartDom2);
+    var option2: EChartsOption;
+
+    option2 = {
+      xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: this.PatientAgeCles
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: [
+        {
+          data:this.PatientAgeValeurs,
+          type: 'line',
+          areaStyle: {}
+        }
+      ]
+    };
+
+    option2 && myChart2.setOption(option2);
+    var chartDom3 = document.getElementById('mainchart3')!;
+    var myChart3 = echarts.init(chartDom3);
+    var option3: EChartsOption;
+
+    option3 = {
+      xAxis: {
+        type: 'category',
+        data: this.MedecinSpecialiteCles,
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: [
+        {
+          data: this.MedecinSpecialiteValeurs,
+          type: 'line'
+        }
+      ]
+    };
+
+    option3 && myChart3.setOption(option3);
+
+
+
+
+  }
   getRendezVous(): Subscription {
     return this.http.get(`${environment.apiURL}/api/stats/rendezvous-par-date`).subscribe((data: any) => {
       console.log(data);
 
-      this.RendezVousCles = Object.keys(data);
-      this.RendezVousValeurs = Object.values(data);
+      this.RendezVousCles = Array.from(Object.keys(data));
+      this.RendezVousValeurs = Array.from(Object.values(data))
+      this.test=data;
 
       console.log(this.RendezVousCles);
-      console.log(this.RendezVousValeurs);
-      console.log(this.RendezVousValeurs[1]);
+
+      this.renderChart();
+
 
     });
   }
@@ -45,7 +126,8 @@ export class AdminComponent implements OnInit {
 
       console.log(this.PatientAgeCles);
       console.log(this.PatientAgeValeurs);
-      console.log(this.PatientAgeValeurs[1]);
+      this.renderChart();
+
 
     });
   }
@@ -58,7 +140,7 @@ export class AdminComponent implements OnInit {
 
       console.log(this.MedecinSpecialiteCles);
       console.log(this.MedecinSpecialiteValeurs);
-      console.log(this.MedecinSpecialiteValeurs[1]);
+      this.renderChart();
 
     });
 
@@ -66,22 +148,39 @@ export class AdminComponent implements OnInit {
   getPatientParAgeParPourcentage(): Subscription {
     return this.http.get(`${environment.apiURL}/api/stats/patients-par-age-poucentage`).subscribe((data: any) => {
       console.log(data);
+      this.PourcentagePatient = Object.values(data);
+      this.renderChart();
+
 
       // this.MedecinSpecialiteCles = Object.keys(data);
       // this.MedecinSpecialiteValeurs = Object.values(data);
       //
       // console.log(this.MedecinSpecialiteCles);
-      // console.log(this.MedecinSpecialiteValeurs);
+      // console.log(this.MedecinSpecialiteValewurs);
       // console.log(this.MedecinSpecialiteValeurs[1]);
 
     });
   }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.getRendezVous();
     this.getMedcinParSpecialite();
     this.getPatientParAge();
     this.getPatientParAgeParPourcentage();
+
+    let numberArray = this.RendezVousValeurs.map(Number);
+    this.http.get(`${environment.apiURL}/api/stats/rendezvous-par-date`).subscribe((data: any) => {
+      console.log(data);
+
+      this.RendezVousCles = Array.from(Object.keys(data));
+      this.RendezVousValeurs = Array.from(Object.values(data))
+      this.test=data;
+
+      console.log(this.RendezVousCles);
+      console.log(this.RendezVousValeurs);
+      console.log(this.test);
+
+    });
 
 
       type EChartsOption = echarts.EChartsOption;
@@ -100,7 +199,7 @@ export class AdminComponent implements OnInit {
       },
       series: [
         {
-          data: [this.MedecinSpecialiteValeurs[1], this.array[3], this.number, this.number, this.number, this.number, this.number],
+          data: this.RendezVousValeurs,
           type: 'bar',
           showBackground: true,
           backgroundStyle: {

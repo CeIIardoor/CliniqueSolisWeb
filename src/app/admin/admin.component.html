@@ -9,15 +9,14 @@
           class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
           <div class="flex items-center justify-between mb-4">
             <div class="flex-shrink-0">
-              <span class="text-xl font-bold leading-none text-gray-900 sm:text-2xl dark:text-white">Titre</span>
-              <h3 class="text-base font-light text-gray-500 dark:text-gray-400">Sous titre</h3>
+              <span class="text-xl font-bold leading-none text-gray-900 sm:text-2xl dark:text-white">Graphe rendez-vous</span>
+              <h3 class="text-base font-light text-gray-500 dark:text-gray-400"> rendez-vous</h3>
             </div>
 
           </div>
           <div id="main-chart">
             <span class="dark:text-white">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.
-            </span>
+        Ce graphe représente le nombre de rendez-vous réservés dans un hôpital   </span>
           </div>
           <!-- Card Footer -->
           <div
@@ -25,7 +24,7 @@
             <div class="flex-shrink-0">
               <a href="#"
                  class="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-primary-700 sm:text-sm hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700">
-                Chi lien
+Liste Rendez-vous
                 <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                      xmlns="http://www.w3.org/2000/svg">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -35,13 +34,13 @@
             </div>
 
           </div>
-          <div id="mainchart" style="height: 500px;width: 1000px"></div>
+          <div id="mainchart" style="height: 500px;width: 1200px"></div>
 
         </div>
         <!--widget 1.2 -->
         <div
           class="p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800">
-          <h3 class="flex items-center mb-4 text-lg font-semibold text-gray-900 dark:text-white">Stats Compta
+          <h3 class="flex items-center mb-4 text-lg font-semibold text-gray-900 dark:text-white">Patients par age
             <button data-popover-target="popover-description" data-popover-placement="bottom-end" type="button">
               <svg class="w-4 h-4 ml-2 text-gray-400 hover:text-gray-500" aria-hidden="true" fill="currentColor"
                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -60,122 +59,38 @@
             </div>
             <div data-popper-arrow></div>
           </div>
-          <ul
-            class="hidden text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg sm:flex dark:divide-gray-600 dark:text-gray-400"
-            id="fullWidthTab" data-tabs-toggle="#fullWidthTabContent" role="tablist">
-            <li class="w-full">
-              <button id="faq-tab" data-tabs-target="#faq" type="button" role="tab" aria-controls="faq"
-                      aria-selected="true"
-                      class="inline-block w-full p-4 rounded-tl-lg bg-gray-50 hover:bg-gray-100 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600">
-                Dépenses
-              </button>
-            </li>
-            <li class="w-full">
-              <button id="about-tab" data-tabs-target="#about" type="button" role="tab" aria-controls="about"
-                      aria-selected="false"
-                      class="inline-block w-full p-4 rounded-tr-lg bg-gray-50 hover:bg-gray-100 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600">
-                Revenus
-              </button>
-            </li>
-          </ul>
-          <div id="fullWidthTabContent" class="border-t border-gray-200 dark:border-gray-600">
-            <div class="hidden pt-4" id="faq" role="tabpanel" aria-labelledby="faq-tab">
-              <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
-                <li class="py-3 sm:py-4">
-                  <div class="flex items-center justify-between">
-                    <div class="flex items-center min-w-0">
-                      <img src="/assets/images/dashboard/depenses/aiguille.png" class="flex-shrink-0 w-10 h-10"
-                           alt="aiguille">
-                      <div class="ml-3">
-                        <p class="font-medium text-gray-900 truncate dark:text-white">
-                          Aiguille médicale
-                        </p>
-                        <div class="flex items-center justify-end flex-1">
-                          <span class="ml-2 text-gray-500 text-xs">Prix unitaire : 1.5 MAD</span>
-                          <span class="ml-2 text-gray-500 text-xs">Quantité : 1000</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                      1500 MAD
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="hidden pt-4" id="about" role="tabpanel" aria-labelledby="about-tab">
-              <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
-                <li class="py-3 sm:py-4">
-                  <div class="flex items-center justify-between">
-                    <div class="flex items-center min-w-0">
-                      <img src="/assets/images/dashboard/revenus/doliprane.png" class="flex-shrink-0 w-10 h-10"
-                           alt="doliprane">
-                      <div class="ml-3">
-                        <p class="font-medium text-gray-900 truncate dark:text-white">
-                          Doliprane
-                        </p>
-                        <div class="flex items-center justify-end flex-1">
-                          <span class="ml-2 text-gray-500 text-xs">Prix unitaire : 14.60 MAD</span>
-                          <span class="ml-2 text-gray-500 text-xs">Quantité : 500</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                      7300 MAD
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
+
+
           <!-- Card Footer -->
-          <div
-            class="flex items-center justify-end pt-3 mt-5 border-t border-gray-200 sm:pt-6 dark:border-gray-700">
-            <div class="flex-shrink-0">
-              <a href="#"
-                 class="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-primary-700 sm:text-sm hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700">
-                Détails
-                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                     xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-              </a>
-            </div>
 
-
-          </div>
           <div class="w-full">
-            <h3 class="mb-2 text-base font-normal text-gray-500 dark:text-gray-400">Patients par age :</h3>
+            <h3 class="mb-2 text-base font-normal text-gray-500 dark:text-gray-400">Les variations entre les groupes d'âge indiquent les tendances émergentes et les problèmes de santé préoccupants. Ces informations guident les décisions des professionnels de la santé pour adapter les services et les programmes de prévention.
+            </h3>
             <div class="flex items-center mb-2">
               <div class="w-16 text-sm font-medium dark:text-white">60+</div>
               <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                <div class="bg-primary-600 h-2.5 rounded-full dark:bg-primary-500" style="width: 50%"></div>
-              </div>
+                <div class="bg-primary-600 h-2.5 rounded-full dark:bg-primary-500" style="width: {{PourcentagePatient[0]}}%"></div></div>
             </div>
             <div class="flex items-center mb-2">
               <div class="w-16 text-sm font-medium dark:text-white">[41-60]</div>
               <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                <div class="bg-primary-600 h-2.5 rounded-full dark:bg-primary-500" style="width: 100%"></div>
+                <div class="bg-primary-600 h-2.5 rounded-full dark:bg-primary-500" style="width: {{PourcentagePatient[1]}}%"></div>
               </div>
             </div>
             <div class="flex items-center mb-2">
               <div class="w-16 text-sm font-medium dark:text-white">[19-40]</div>
               <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                <div class="bg-primary-600 h-2.5 rounded-full dark:bg-primary-500" style="width: 60%"></div>
+                <div class="bg-primary-600 h-2.5 rounded-full dark:bg-primary-500" style="width: {{PourcentagePatient[2]}}%"></div>
               </div>
             </div>
             <div class="flex items-center mb-2">
               <div class="w-16 text-sm font-medium dark:text-white">[0-18]</div>
               <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                <div class="bg-primary-600 h-2.5 rounded-full dark:bg-primary-500" style="width: 30%"></div>
+                <div class="bg-primary-600 h-2.5 rounded-full dark:bg-primary-500" style="width: {{PourcentagePatient[3]}}%"></div>
               </div>
             </div>
           </div>
-          <div class="flex items-center justify-start pt-3 mt-5 border-t border-gray-200 sm:pt-6 dark:border-gray-700">
-            <span class="dark:text-white">
-              Commentaire
-            </span>
-          </div>
+
 
         </div>
 
@@ -244,17 +159,14 @@
                        <div class="items-center justify-between pb-4 border-b border-gray-200 sm:flex dark:border-gray-700">
                 <div class="w-full mb-4 sm:mb-0">
                 <span class="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">
-                  Titre du graph
-                </span>
-                  <p class="flex items-center text-base font-normal text-gray-500 dark:text-gray-400">
-                    Juillet 2023
-                  </p>
+Graphe Patients                </span>
+
                 </div>
               </div>
               <div class="w-full dark:text-white">
-                Contenu du graph
+                Ce graphe représente le nombre des patients  dans l'hôpital selon leurs ages
               </div>
-              <div id="mainchart2" style="height: 500px;width: 700px"></div>
+              <div id="mainchart2" style="height: 600px;width: 900px"></div>
 
           </div>
 
@@ -267,16 +179,14 @@
             <div class="items-center justify-between pb-4 border-b border-gray-200 sm:flex dark:border-gray-700">
               <div class="w-full mb-4 sm:mb-0">
                 <span class="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">
-                  Titre du graph
+                 Graphe Medecins
                 </span>
-                <p class="flex items-center text-base font-normal text-gray-500 dark:text-gray-400">
-                  Juillet 2023
-                </p>
+
               </div>
             </div>
-            <div class="w-full dark:text-white">
-              Contenu du graph
-              <div id="mainchart3" style="height: 500px;width: 700px"></div>
+            <div style="margin-top: 10px" class="w-full dark:text-white">
+              Ce graphe représente le nombre des meedcins  dans l'hôpital selon leurs spécialités
+              <div id="mainchart3" style="height: 500px;width: 800px"></div>
 
             </div>
 
@@ -285,7 +195,7 @@
         </div>
       </div>
     </div>
-
+    {{RendezVousValeurs[1]}}
   </main>
 
 </div>

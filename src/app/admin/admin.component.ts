@@ -15,24 +15,59 @@ import {environment} from "../../environments/environment";
 })
 export class AdminComponent implements OnInit {
   constructor(private http: HttpClient) {}
-  mesCles: string[] = [];
-  mesValeurs: string[] = [];
+  RendezVousCles: string[] = [];
+  RendezVousValeurs: number[] = [];
+  PatientAgeCles: string[] = [];
+  PatientAgeValeurs: number[] = [];
+  MedecinSpecialiteCles: string[] = [];
+  MedecinSpecialiteValeurs: number[] = [];
   number: number = 5;
-  getAllPatients(): Subscription {
+  array: any[] = [1,2,4,6,7,8,9,10];
+  getRendezVous(): Subscription {
     return this.http.get(`${environment.apiURL}/api/stats/rendezvous-par-date`).subscribe((data: any) => {
       console.log(data);
 
-      this.mesCles = Object.keys(data);
-      this.mesValeurs = Object.values(data);
+      this.RendezVousCles = Object.keys(data);
+      this.RendezVousValeurs = Object.values(data);
 
-      console.log(this.mesCles);
-      console.log(this.mesValeurs);
-      console.log(this.mesValeurs[1]);
+      console.log(this.RendezVousCles);
+      console.log(this.RendezVousValeurs);
+      console.log(this.RendezVousValeurs[1]);
+
+    });
+  }
+ getPatientParAge(): Subscription {
+    return this.http.get(`${environment.apiURL}/api/stats/patients-par-age`).subscribe((data: any) => {
+      console.log(data);
+
+      this.PatientAgeCles = Object.keys(data);
+      this.PatientAgeValeurs = Object.values(data);
+
+      console.log(this.PatientAgeCles);
+      console.log(this.PatientAgeValeurs);
+      console.log(this.PatientAgeValeurs[1]);
+
+    });
+  }
+  getMedcinParSpecialite(): Subscription {
+    return this.http.get(`${environment.apiURL}/api/stats/medecins-par-specialite`).subscribe((data: any) => {
+      console.log(data);
+
+      this.MedecinSpecialiteCles = Object.keys(data);
+      this.MedecinSpecialiteValeurs = Object.values(data);
+
+      console.log(this.MedecinSpecialiteCles);
+      console.log(this.MedecinSpecialiteValeurs);
+      console.log(this.MedecinSpecialiteValeurs[1]);
 
     });
   }
 
   ngOnInit() {
+    this.getRendezVous();
+    this.getMedcinParSpecialite();
+    this.getPatientParAge();
+
 
       type EChartsOption = echarts.EChartsOption;
 
@@ -50,7 +85,7 @@ export class AdminComponent implements OnInit {
       },
       series: [
         {
-          data: [this.mesValeurs[1], this.number, this.number, this.number, this.number, this.number, this.number],
+          data: [this.MedecinSpecialiteValeurs[1], this.array[3], this.number, this.number, this.number, this.number, this.number],
           type: 'bar',
           showBackground: true,
           backgroundStyle: {
@@ -107,7 +142,7 @@ export class AdminComponent implements OnInit {
     option3 && myChart3.setOption(option3);
 
 
-    this.getAllPatients();
+
   }
 
 
